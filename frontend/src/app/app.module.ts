@@ -14,6 +14,9 @@ import { PageAdminComponent } from './components/page-admin/page-admin.component
 import { TableArchiveComponent } from './components/table-archive/table-archive.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModifierComponent } from './components/modifier/modifier.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { ModifierComponent } from './components/modifier/modifier.component';
     PageAdminComponent,
     TableArchiveComponent,
     ModifierComponent,
+    SidebarComponent,
+    SidebarUserComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,7 @@ import { ModifierComponent } from './components/modifier/modifier.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
 
   ],
   providers: [
