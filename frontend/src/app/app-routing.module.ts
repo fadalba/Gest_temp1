@@ -1,3 +1,4 @@
+import { HeaderComponent } from './components/header/header.component';
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ConnectionComponent } from './components/connection/connection.component';
@@ -7,6 +8,7 @@ import { AuthGuard } from "./service/auth.guard";
 
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
+  { path: 'header', component: HeaderComponent},
   { path: 'log-in', component: ConnectionComponent },
   { path: 'sign-up', component: InscriptionComponent },
   { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] }

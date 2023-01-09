@@ -1,5 +1,5 @@
 .header {
-  background-color: #e493a3;
+  background-color: #0C7C8F;
   height: 110px;
 }
 
@@ -11,6 +11,8 @@
 }
 
 .profil {
+  background-color: #fff;
+  border-radius: 15px;
   width: 100px;
   height: 100px;
   margin-top: 5px;
@@ -41,7 +43,8 @@
   padding: 10px;
 }
 .end a:hover{
-  color: #e493a3;
+  color: #0C7C8F;
   background-color: #fff;
   border-radius: 5px;
 }
+svg{color: #fff;}
