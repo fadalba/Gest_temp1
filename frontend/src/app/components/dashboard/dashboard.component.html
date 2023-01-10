@@ -2,25 +2,27 @@
 <br/>
 <div class="container d-flex h-100 flex-column" style="background-color: rgb(224, 227, 229);" > <!-- div principal -->
 
-  <div class="row flex-fill d-flex" >  <!-- div contenant les 3 premiers sous divs -->
-    <h2 align="center">Température et Humidité en temps réel</h2>
-    <div class="col-md-4 bg-light m-2" style="border-radius: 5px;">  <!-- div température -->
-      <img src="../assets/tmp.png" class="img-fluid rounded-circle" height="50px">  <h5 align="right">Température <br/> 20 &deg; C </h5>
+  <div class="row flex-fill d-flex align-items-center" >  <!-- div contenant les 3 premiers sous divs -->
+        <h2 align="center">Température et Humidité en temps réel </h2>
+    <div class="col-md-4 bg-light m-2 " style="border-radius: 5px ;">  <!-- div température -->
+      <img src="../assets/tmp.png" class="img-fluid rounded-circle">  <h5 align="right">Température <br/> 20 &deg; C </h5>
     </div>
     <div class="col-md-4 bg-light m-2" style="border-radius: 5px;">    <!-- div humidité -->
 
       <img src="../assets/hum.png" class="img-fluid rounded-circle" height="50px"> <h5 align="right">Humidité<br/> 38%</h5>
     </div>
-    <div class="col-md-3 bg-light m-2" style="border-radius: 5px;"> <!-- div ventilation -->
-      <h5 align="center">Visualisation de la ventilation</h5>
-     
+    <div class="col-md-3 bg-light m-2 " style="border-radius: 5px;"> <!-- div ventilation -->
+      <h1 align="center">ventilation</h1>
+
       <div class="alarm">
-        <h1 align="right"><i class="bi bi-bell-fill" style="color: green; height: 500px;"></i></h1>
+        <h1 align="right"><i class="bi bi-bell-fill" style="color: green;"></i></h1>
+
         <div class="vent">
          <h1 align="left"><i class="bi bi-fan"></i></h1>
         </div>
       </div>
-    </div>
+
+
   </div>
   <div class="row flex-fill d-flex">  <!-- div partie 2 -->
     <div class="col-7 bg-light m-2" style="border-radius: 5px;">  <!-- div information  température et humidité journée -->
@@ -40,21 +42,21 @@
 
             <td>recup T° 8h</td>
             <td>recup Hum 8h</td>
-            <th scope="row">8h  <img src="../assets/soleil8h.jpg" height="50px"> </th>
+            <th scope="row">8h  <i class="bi bi-sun" style="color: yellow;"></i> </th>
 
           </tr>
           <tr align="center">
 
             <td>recup T° 12h </td>
             <td>recp Hum 12h</td>
-            <th scope="row">12H  <img src="../assets/soleil12h.jpg" height="50px"> </th>
+            <th scope="row">12H  <i class="bi bi-sun-fill" style="color: yellow;"></i></th>
 
           </tr>
           <tr align="center">
 
             <td>recp T° 19h</td>
             <td>recup Hum 19H</td>
-            <th scope="row">19h  <img src="../assets/soleil19h.jpg" height="50px"> </th>
+            <th scope="row">19h  <i class="bi bi-sunset" style="color:rgb(101, 111, 158);"></i></th>
           </tr>
         </tbody>
       </table>
@@ -66,7 +68,7 @@
     <h2 align="center"> <span>Utilisateurs actifs </span></h2>
     </div>
     <div>
-      <h1 align="center"><a routerLink='' ><i class="bi bi-person-down" style="color: red;"></i></a></h1>
+      <h1 align="center"><a routerLink='./admin' ><i class="bi bi-person-down" style="color: red;"></i></a></h1>
     <h2 align="center"> <span>Utilisateurs Archivés </span></h2>
     </div>
     </div>
@@ -133,10 +135,28 @@
   </div>
 
 
-<!-- <style>
-  img{
-    border-radius: 10px;
 
+
+
+
+
+
+
+
+
+
+
+<style>
+  h5{
+    position: relative;
+
+top: -100px; left: 0px;
+  }
+
+  img{
+    width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   }
 </style>
-

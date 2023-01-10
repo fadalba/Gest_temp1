@@ -1,3 +1,4 @@
+import { TableauComponent } from './components/tableau/tableau.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'header', component: HeaderComponent},
   { path: 'log-in', component: ConnectionComponent },
   { path: 'dash', component: DashboardComponent },
+  { path: 'admin', component: TableauComponent },
 
   { path: 'sign-up', component: InscriptionComponent },
   { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] }

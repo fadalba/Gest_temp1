@@ -18,7 +18,7 @@ import { HttpEvent } from '@angular/common/http';
 export class SidebarComponent {
 
   public sidebarShow: boolean = false;
-  
+
   currentUser: any = {};
 
   signupForm: FormGroup;
@@ -61,7 +61,7 @@ export class SidebarComponent {
 
   ngOnInit() {}
 
-  // Fonction pour télécharger l'mage 
+  // Fonction pour télécharger l'mage
   uploadFile(event: any) {
 
     const file = event.target.files[0];
