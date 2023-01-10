@@ -4,14 +4,21 @@
   <div class="row flex-fill d-flex" >  <!-- div contenant les 3 premiers sous divs -->
     <h2 align="center">Température et Humidité en temps réel</h2>
     <div class="col-md-4 bg-light m-2" style="border-radius: 5px;">  <!-- div température -->
-      <img src="../assets/tmp.png" height="50px">  <h5 align="right">Température <br/> 20 &deg; C </h5>
+      <img src="../assets/tmp.png" class="img-fluid rounded-circle" height="50px">  <h5 align="right">Température <br/> 20 &deg; C </h5>
     </div>
     <div class="col-md-4 bg-light m-2" style="border-radius: 5px;">    <!-- div humidité -->
 
-      <img src="../assets/hum.png" height="50px"> <h5 align="right">Humidité<br/> 38%</h5>
+      <img src="../assets/hum.png" class="img-fluid rounded-circle" height="50px"> <h5 align="right">Humidité<br/> 38%</h5>
     </div>
     <div class="col-md-3 bg-light m-2" style="border-radius: 5px;"> <!-- div ventilation -->
       <h5 align="center">Visualisation de la ventilation</h5>
+     
+      <div class="alarm">
+        <h1 align="right"><i class="bi bi-bell-fill" style="color: green; height: 500px;"></i></h1>
+        <div class="vent">
+         <h1 align="left"><i class="bi bi-fan"></i></h1>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row flex-fill d-flex">  <!-- div partie 2 -->
@@ -54,11 +61,11 @@
     <div class="col-md-4 bg-light m-2" style="border-radius: 5px;">  <!-- div informations personnelles -->
       <h2 align="center">Listes</h2>
      <div>
-      <h1 align="center"><a routerLink='/tableau' ><i class="bi bi-people-fill" style="color: green;" ></i></a></h1>
+      <h1 align="center"><a routerLink='' ><i class="bi bi-people-fill" style="color: green;" ></i></a></h1>
     <h2 align="center"> <span>Utilisateurs actifs </span></h2>
     </div>
     <div>
-      <h1 align="center"><a routerLink='/tableau' ><i class="bi bi-person-down" style="color: red;"></i></a></h1>
+      <h1 align="center"><a routerLink='' ><i class="bi bi-person-down" style="color: red;"></i></a></h1>
     <h2 align="center"> <span>Utilisateurs Archivés </span></h2>
     </div>
     </div>
@@ -125,9 +132,10 @@
   </div>
 
 
-<style>
+<!-- <style>
   img{
     border-radius: 30px;
 
   }
 </style>
+ -->
