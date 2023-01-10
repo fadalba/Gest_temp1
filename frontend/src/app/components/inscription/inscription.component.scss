@@ -1,9 +1,61 @@
 .container
 {
-    border: 2px solid #e493a3;
-    box-shadow: 7px 2px 2px #e493a3;
+    border: 2px solid #000000;
+    box-shadow: 6px 4px 2px #000000;
     border-radius: 5px;
 }
 a{
     font-size: 17px;
+}
+.text-center
+{
+    margin-top: 1px;
+    font-size: larger;
+    font-weight: bolder;
+    size: 10px;
+}
+
+.profil {
+    width: 80px;
+    height: 80px;
+    margin-top: 0px;
+    margin-bottom: 5px;display: flex;justify-content: center;margin-left: 42%;
+}
+
+.img-fluid
+{
+    height: 75px;
+    width: 105px;
+    border-radius: 50%;
+}
+.img-Climat
+{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-top: -11px;
+   
+}
+
+.btn
+{
+    background-color: #0C7C8F;
+    border-color: #0C7C8F;
+    color: #FFFFFF;
+    font-weight: bold;
+    size: 80px;
+    margin-left: 15%;
+    margin-top: 25px;
+    width: 70%;
+    
+}
+.btn:hover
+{
+    background-color:#4BCFFF;
+    color: blue;
+    border: none;
+}
+span
+{
+    color: #F90303;
 }
