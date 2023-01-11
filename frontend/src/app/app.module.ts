@@ -17,6 +17,7 @@ import { ModifierComponent } from './components/modifier/modifier.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SidebarComponent,
     SidebarUserComponent,
     DashboardComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     Ng2SearchPipeModule,
     FormsModule,
     NgxPaginationModule,
+    
 
   ],
   providers: [
@@ -47,8 +51,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    DatePipe,
+
+
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+ }
