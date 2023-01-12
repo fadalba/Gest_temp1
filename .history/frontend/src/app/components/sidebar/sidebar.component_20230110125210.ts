@@ -5,21 +5,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MustMatch } from 'src/app/MustMatch';
+/* import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+ */import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 
 @Component({
-  selector: 'app-sidebar-user',
-  templateUrl: './sidebar-user.component.html',
-  styleUrls: ['./sidebar-user.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarUserComponent {
+export class SidebarComponent {
 
   public sidebarShow: boolean = false;
 
-
+  currentUser: any = {};
 
   signupForm: FormGroup;
   submitted=false;
@@ -29,10 +29,20 @@ export class SidebarUserComponent {
   percentDone?: any = 0;
   errMsg: any;
 
+
+
+
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
+              private actRoute: ActivatedRoute,
               public router: Router
   ) {
+
+    //Recuperer les informations de l'utilisateur
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.authService.getUserProfile(id).subscribe((res) => {
+    this.currentUser = res.msg;
+    });
     //Crontôle de saisie du formulaire
     this.signupForm = this.formBuilder.group({
         prenom:['',[Validators.required , UsernameValidator.cannotContainSpace]],

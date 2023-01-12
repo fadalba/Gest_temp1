@@ -14,7 +14,7 @@ import { AuthGuard } from "./service/auth.guard";
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
 
-  { path: 'log-in', component: ConnectionComponent },
+  { path: 'log-in', component: con },
 
   { path: 'header', component: HeaderComponent},
   { path: 'log-in', component: ConnectionComponent },
