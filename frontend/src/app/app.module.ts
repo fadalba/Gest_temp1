@@ -15,8 +15,15 @@ import { TableArchiveComponent } from './components/table-archive/table-archive.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModifierComponent } from './components/modifier/modifier.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidebaruserComponent } from './components/sidebaruser/sidebaruser.component';
+import { EspaceutilisateurComponent } from './components/espaceutilisateur/espaceutilisateur.component';
+import { AffichageActifsComponent } from './components/affichage-actifs/affichage-actifs.component';
+import { AffichageArchivesComponent } from './components/affichage-archives/affichage-archives.component';
+import { TabactiforUtilisComponent } from './components/tabactifor-utilis/tabactifor-utilis.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { TestComponent } from './components/test/test.component';
+import { Test2Component } from './components/test2/test2.component';
+import { AffichageactiforUserComponent } from './components/affichageactifor-user/affichageactifor-user.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +36,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     TableArchiveComponent,
     ModifierComponent,
     SidebarComponent,
-    SidebarUserComponent,
-    DashboardComponent,
+    SidebaruserComponent,
+    EspaceutilisateurComponent,
+    AffichageActifsComponent,
+    AffichageArchivesComponent,
+    TabactiforUtilisComponent,
+    DashboardAdminComponent,
+    TestComponent,
+    Test2Component,
+    AffichageactiforUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +53,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     FormsModule,
-    NgxPaginationModule,
+    NgxPaginationModule
 
   ],
   providers: [

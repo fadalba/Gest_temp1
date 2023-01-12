@@ -11,11 +11,11 @@ import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 
 @Component({
-  selector: 'app-sidebar-user',
-  templateUrl: './sidebar-user.component.html',
-  styleUrls: ['./sidebar-user.component.scss']
+  selector: 'app-sidebaruser',
+  templateUrl: './sidebaruser.component.html',
+  styleUrls: ['./sidebaruser.component.scss']
 })
-export class SidebarUserComponent {
+export class SidebaruserComponent {
 
   public sidebarShow: boolean = false;
   
@@ -110,4 +110,17 @@ export class SidebarUserComponent {
 
 
     }
+
+  
+
+
+  
+
+  
+
+  
+
+   
 }
+
+
