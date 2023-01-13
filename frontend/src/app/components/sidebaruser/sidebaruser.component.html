@@ -9,7 +9,6 @@
         <!-- <div class="set-sidebar-text"><i class="bi bi-person-fill-gear"></i>Modif<br>mot de passe</div> -->
         <button type="button" class="set-sidebar-text" data-toggle="modal" data-target="#modifpwd"><i class="bi bi-person-fill-gear"></i>Edit</button>
         <!-- <div class="set-sidebar-text"><i class="bi bi-person-add"></i>inscrire </div> -->
-        <button type="button" class="set-sidebar-text" data-toggle="modal" data-target="#inscrire"><i class="bi bi-person-add"></i>Inscrire</button>
         <div class="set-sidebar-text"><i class="bi bi-person-check"routerLink="/tabActif"></i>Actifs</div>
     
     </div>  
@@ -38,7 +37,7 @@
                     formControlName="password" type="password" class="form-control" id="pass1">
                 <div *ngIf="submitted && signupForm.controls['password'].errors" class="text-danger">
                     <div *ngIf="submitted && signupForm.controls['password'].errors['required']">
-                        Le Password est necessaire!
+                        Le mot de passe est necessaire!
                     </div>
                     <div *ngIf="submitted && signupForm.controls['password'].errors['minlength']">
                         Saisi au moins 8 caracteres
@@ -52,7 +51,7 @@
                       formControlName="password" type="password" class="form-control" id="pass1">
                   <div *ngIf="submitted && signupForm.controls['password'].errors" class="text-danger">
                       <div *ngIf="submitted && signupForm.controls['password'].errors['required']">
-                          Le Password est necessaire!
+                          Le mot de passe est necessaire!
                       </div>
                       <div *ngIf="submitted && signupForm.controls['password'].errors['minlength']">
                           Saisi au moins 8 caracteres
@@ -61,7 +60,7 @@
               </div>
       
               <div class="col-md-6">
-                  <label for="passwordConfirm">Confirmation Password</label>
+                  <label for="passwordConfirm">Confirmation mot de passe</label>
                   <input [ngClass]="{'is-invalid':submitted && signupForm.controls['password'].errors}"
                       formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
                   <div *ngIf="submitted && signupForm.controls['passwordConfirm'].errors" class="text-danger">
@@ -69,7 +68,7 @@
                           Veillez confirmer le mot de passe
                       </div>
                       <div *ngIf="submitted && signupForm.controls['passwordConfirm'].errors['mustMatch']">
-                          Les mots de passes ne correspondent pas
+                          Les mots de passe ne correspondent pas
                       </div>
                   </div>
               </div>

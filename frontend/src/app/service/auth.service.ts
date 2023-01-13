@@ -10,7 +10,7 @@ import {
 import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
-})
+})  
 export class AuthService {
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');

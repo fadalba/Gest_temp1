@@ -1,3 +1,14 @@
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-sidebar',
+//   templateUrl: './sidebar.component.html',
+//   styleUrls: ['./sidebar.component.scss']
+// })
+// export class SidebarComponent {
+
+// }
+
 
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from './../../service/auth.service';
@@ -9,14 +20,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
-
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
-
+export class SidebarComponent implements OnInit{
   public sidebarShow: boolean = false;
 
   currentUser: any = {};
@@ -120,4 +129,6 @@ export class SidebarComponent {
 
 
     }
+
+    
 }

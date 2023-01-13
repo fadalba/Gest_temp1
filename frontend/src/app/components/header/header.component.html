@@ -1,24 +1,24 @@
+
 <header class="header">
   <div class="menu_admin">
       <div class="infos">
           <div>
               <div class="profil d-flex justify-center">
-                  <img src="assets/logo2.png" class="img-fluid rounded-circle"  alt="photo de profil">
+                  <!-- <img [src]="currentUser.imageUrl" class="img-fluid rounded-circle"  alt=""> -->
+                  <img src="https://media.discordapp.net/attachments/1054326970202202194/1055069837359071302/logo.png?width=413&height=413" class="img-fluid rounded-circle"  alt="">
               </div>
           </div>
           <div class="nom">
-            <h3><!--{{ this.currentUser.prenom }} {{ this.currentUser.nom }}-->Prenom Nom</h3>
-            <p>Matricule</p>
+            <h3>{{ this.currentUser.prenom }} {{ this.currentUser.nom }}</h3>
+            <p>Matricule</p> 
+            <!-- pour le matricule, je doit m'inspirer du ts de page admin -->
           </div>
       </div>
-      <div class="date">
-        <h2>03 Janvier 2023</h2>
+      <div class="end">
+        <h3 style="color: #FFFFFF;">10/01/2023</h3>
       </div>
       <div class="end">
-        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-          <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-        </svg>
+        <a class="m-1" routerLink="/log-in"><i id="bi" class="bi bi-box-arrow-left"></i> </a>
       </div>
   </div>
 </header>
