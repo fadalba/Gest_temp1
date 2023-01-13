@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const api = require('./routes/auth.routes')
 
 mongoose
-  .connect('mongodb://localhost:27017/gestionTemp') 
+  .connect('mongodb://localhost:27017/gestion') 
   
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
