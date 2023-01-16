@@ -17,7 +17,7 @@ import { ModifierComponent } from './components/modifier/modifier.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DatePipe } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { DatePipe } from '@angular/common';
     Ng2SearchPipeModule,
     FormsModule,
     NgxPaginationModule,
-    
+
 
   ],
   providers: [
@@ -51,13 +51,12 @@ import { DatePipe } from '@angular/common';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    },
-    DatePipe,
+    }
+
 
 
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
 
- }
+export class AppModule {}
