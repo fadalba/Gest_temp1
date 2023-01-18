@@ -1,19 +1,5 @@
-<div class="contener">
-  <app-header></app-header>
-<!-- ----------------------------Header-------------------------- -->
-<!-- ici c'est la div qui englobe et le sidebar et le corps du dashboard -->
 
-     <!--  <div class="sidebar" >
-          <app-sidebar></app-sidebar>
-      </div>
- -->
-
-
-
-</div>
-<div>
 <div class="my-5" style="width: 100%;height: 90%;margin-top: 0px;">
-
    <!-- -------------------Icone liste --------------- -->
     <!-- -------------------Recherche---------------- -->
   <div class="form-group col-md-3">
@@ -35,7 +21,7 @@
             <th scope="col">Nom</th>
             <th scope="col">Email</th>
             <th scope="col">Rôle</th>
-            <th scope="col" *ngIf="this.currentUser.role === 'Utilisateur'">Actions</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <!-- Recuperer et afficher les informations de la base de donnée -->
@@ -45,7 +31,7 @@
             <td>{{ donnee.nom }}</td>
             <td>{{ donnee.email }}</td>
             <td>{{ donnee.role }}</td>
-            <td *ngIf="this.currentUser.role === 'Utilisateur'">
+            <td>
 
               <button class="btn link" (click)="archiver(donnee._id, donnee.etat)">
                 <i class="bi bi-arrow-down-square"></i>
@@ -118,11 +104,10 @@
   </div>
 </div>
 
-<!-- ----------j'enleve fixed-bottom pour fixer la Pagination---------------------- -->
+<!-- ---------- fixed-bottom pour fixer la Pagination---------------------- -->
 <div class="pagination fixed-bottom justify-content-center">
   <pagination-controls (pageChange)="page=$event"></pagination-controls>
 </div>
-
 
 
 
