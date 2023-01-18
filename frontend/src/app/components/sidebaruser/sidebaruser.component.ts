@@ -126,6 +126,8 @@ export class SidebaruserComponent {
         },
         error => {
           this.errMsg = false
+          console.log(error);
+
           setTimeout(()=>{ this.errMsg = true}, 2000);
         });
     }
