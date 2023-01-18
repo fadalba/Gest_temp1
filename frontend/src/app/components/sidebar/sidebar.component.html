@@ -139,7 +139,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <button type="button" class="exit" data-dismiss="modal"><i class="bi bi-x-circle" id="bi"></i></button>
-      <form [formGroup]="signupForm" (ngSubmit)="updatepass()" id="leform" class="row g-3 my-5"
+      <form [formGroup]="updateForm" (ngSubmit)="updatepass()" id="leform" class="row g-3 my-5"
       enctype="multipart/form-data">
       <div class="profil justify-center">
           <img src="./assets/weather-icon.svg" class="img-Climat">
@@ -150,7 +150,7 @@
           <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
       </ng-container>
 
-      <!-- <div class=" col-md-6">
+       <div class=" col-md-6">
         <label for="password">Ancien mot de passe</label>
         <input [ngClass]="{'is-invalid':submitted && signupForm.controls['password'].errors}"
             formControlName="password" type="password" class="form-control" id="pass1">
@@ -163,7 +163,7 @@
             </div>
 
         </div>
-    </div> -->
+    </div> 
 
       <div class=" col-md-6">
           <label for="password">Nouveau mot de passe</label>

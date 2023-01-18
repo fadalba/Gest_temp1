@@ -38,6 +38,7 @@ export class SidebarComponent implements OnInit{
   percentDone?: any = 0;
   errMsg: any;
   show:boolean = false
+updateForm: any;
 
 
 
@@ -158,7 +159,7 @@ export class SidebarComponent implements OnInit{
      return;
    }
       this.authService.updatepassword(id, user).subscribe(
-        data=>{
+            data=>{
 
           Swal.fire({
             position: 'center',
@@ -168,7 +169,7 @@ export class SidebarComponent implements OnInit{
             timer: 1500
           });window.setTimeout(function(){location.reload()},1000)
         },
-        error => {
+           error => {
           console.log(error);
 
           this.errMsg = "veuillez saisir votre actuel mot de passe!"

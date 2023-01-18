@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })  
 export class AuthService {
+  updatepassword(id: string | null, user: { password: any; ancienpassword: any; }) {
+    throw new Error('Method not implemented.');
+    
+  }
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
