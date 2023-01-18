@@ -152,13 +152,13 @@
 
        <div class=" col-md-6">
         <label for="password">Ancien mot de passe</label>
-        <input [ngClass]="{'is-invalid':submitted && signupForm.controls['password'].errors}"
+        <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
             formControlName="password" type="password" class="form-control" id="pass1">
-        <div *ngIf="submitted && signupForm.controls['password'].errors" class="text-danger">
-            <div *ngIf="submitted && signupForm.controls['password'].errors['required']">
+        <div *ngIf="submitted && updateForm.controls['password'].errors" class="text-danger">
+            <div *ngIf="submitted && updateForm.controls['password'].errors['required']">
                 Le mot de passe est necessaire!
             </div>
-            <div *ngIf="submitted && signupForm.controls['password'].errors['minlength']">
+            <div *ngIf="submitted && updateForm.controls['password'].errors['minlength']">
                 Saisi au moins 8 caracteres !
             </div>
 
