@@ -2,7 +2,6 @@
     <i class="bi bi-list"></i>
   </button> -->
   <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
-    <button class="sidebar-close" (click)="sidebarShow = !sidebarShow">x</button>
     <div class="sidebar-content">
         <h2 class="set-align"></h2>
         <div  class="set-sidebar-text"><i id="dashboardIcon"class="bi bi-speedometer fa-4x"routerLink="/EspaceAdmin"></i>Tableau de bord</div>
@@ -79,7 +78,7 @@
                   </select>
                   <div *ngIf="submitted && signupForm.controls['role'].errors" class="text-danger">
                       <div *ngIf="submitted && signupForm.controls['role'].errors['required']">
-                          Choisisez un role
+                          Choisisez un rôle
                       </div>
                   </div>
               </div>
@@ -131,7 +130,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <button type="button" class="exit" data-dismiss="modal"><i class="bi bi-x-circle" id="bi"></i></button>
-      <form [formGroup]="signupForm" (ngSubmit)="updatepass()" id="leform" class="row g-3 my-5"
+      <form [formGroup]="updateForm" (ngSubmit)="updatepass()" id="leform" class="row g-3 my-5"
       enctype="multipart/form-data">
       <div class="profil justify-center">
           <img src="./assets/weather-icon.svg" class="img-Climat">
@@ -142,30 +141,30 @@
           <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
       </ng-container>
 
-      <!-- <div class=" col-md-6">
-        <label for="password">Ancien mot de passe</label>
-        <input [ngClass]="{'is-invalid':submitted && signupForm.controls['password'].errors}"
-            formControlName="password" type="password" class="form-control" id="pass1">
-        <div *ngIf="submitted && signupForm.controls['password'].errors" class="text-danger">
-            <div *ngIf="submitted && signupForm.controls['password'].errors['required']">
+     <div class=" col-md-6">
+        <label for="ancienpassword">Ancien mot de passe</label>
+        <input [ngClass]="{'is-invalid':submitted && updateForm.controls['ancienpassword'].errors}"
+            formControlName="ancienpassword" type="password" class="form-control" id="pass1">
+        <div *ngIf="submitted && updateForm.controls['ancienpassword'].errors" class="text-danger">
+            <div *ngIf="submitted && updateForm.controls['ancienpassword'].errors['required']">
                 Le mot de passe est necessaire!
             </div>
-            <div *ngIf="submitted && signupForm.controls['password'].errors['minlength']">
+            <div *ngIf="submitted && updateForm.controls['ancienpassword'].errors['minlength']">
                 Saisi au moins 8 caracteres !
             </div>
 
         </div>
-    </div> -->
+    </div>
 
       <div class=" col-md-6">
           <label for="password">Nouveau mot de passe</label>
-          <input [ngClass]="{'is-invalid':submitted && signupForm.controls['password'].errors}"
+          <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
               formControlName="password" type="password" class="form-control" id="pass1">
-          <div *ngIf="submitted && signupForm.controls['password'].errors" class="text-danger">
-              <div *ngIf="submitted && signupForm.controls['password'].errors['required']">
+          <div *ngIf="submitted && updateForm.controls['password'].errors" class="text-danger">
+              <div *ngIf="submitted && updateForm.controls['password'].errors['required']">
                   Le mot de passe est necessaire!
               </div>
-              <div *ngIf="submitted && signupForm.controls['password'].errors['minlength']">
+              <div *ngIf="submitted && updateForm.controls['password'].errors['minlength']">
                   Saisi au moins 8 caracteres
               </div>
           </div>
@@ -173,13 +172,13 @@
 
       <div class="col-md-6">
           <label for="passwordConfirm">Confirmation mot de passe</label>
-          <input [ngClass]="{'is-invalid':submitted && signupForm.controls['password'].errors}"
+          <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
               formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
-          <div *ngIf="submitted && signupForm.controls['passwordConfirm'].errors" class="text-danger">
-              <div *ngIf="submitted && signupForm.controls['passwordConfirm'].errors['required']">
+          <div *ngIf="submitted && updateForm.controls['passwordConfirm'].errors" class="text-danger">
+              <div *ngIf="submitted && updateForm.controls['passwordConfirm'].errors['required']">
                   Veillez confirmer le mot de passe
               </div>
-              <div *ngIf="submitted && signupForm.controls['passwordConfirm'].errors['mustMatch']">
+              <div *ngIf="submitted && updateForm.controls['passwordConfirm'].errors['mustMatch']">
                   Les mots de passe ne correspondent pas
               </div>
           </div>
