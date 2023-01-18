@@ -134,6 +134,9 @@ color: #000000; size: 18px;}
 .haut{width: 98%;height: 46%;background-color: #FFFFFF;display: flex;flex-direction: column;gap: 2%; text-align: center;padding: 3%;}
 .bas{width: 98%;height: 46%;background-color: #FFFFFF;display: flex;flex-direction: column;gap: 2%;text-align: center;padding: 3%;}
 
+.bas a:hover{background-color:#F5F5F5;border-radius: 20%;}
+.haut a:hover{background-color:#F5F5F5;border-radius: 20%;}
+
 .textTemp h3{color: #000000;}
 
 .im{border-radius: 50%;}h3{color: black;}

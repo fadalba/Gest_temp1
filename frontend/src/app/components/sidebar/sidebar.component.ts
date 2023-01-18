@@ -37,6 +37,7 @@ export class SidebarComponent implements OnInit{
   preview!: string;
   percentDone?: any = 0;
   errMsg: any;
+  show:boolean = false
 
 
 
@@ -85,7 +86,13 @@ export class SidebarComponent implements OnInit{
     };
     reader.readAsDataURL(file);
   }
+  public afficher():void{
+    this.show = true
+  }
 
+  public afficher1():void{
+    this.show = false
+  }
 //Fonction pour l'inscription
   registerUser() {
     this.submitted = true;

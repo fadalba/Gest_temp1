@@ -16,7 +16,7 @@
 
 <table class="table table-hover w-75 my-3">
   <thead style="text-align: center;">
-      <tr class="line">
+      <tr style="text-align: center;" class="line">
           <th scope="col">Prenom</th>
           <th scope="col">Nom</th>
           <th scope="col">Email</th>
@@ -25,7 +25,7 @@
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght  };">
+      <tr style="text-align: center;" *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght  };">
           <td>{{ donnee.prenom }}</td>
           <td>{{ donnee.nom }}</td>
           <td>{{ donnee.email }}</td>
