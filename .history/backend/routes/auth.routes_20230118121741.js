@@ -213,14 +213,6 @@ router.route('/updatepassword/:id').put(authorize, async(req, res) => {
   const updatedData = req.body;
   const options = { new: true };
   const newpassword= updatedData.password;
-  const ancienpassword= updatedData.ancienpassword
-  const user =await userSchema.findById(id)
-  const comp = await bcrypt.compare(ancienpassword, user.password)
- console.log(bcrypt.compare(ancienpassword, user.password));
-  if(!comp){
-    res.status(400).json({message: "veuillez saisir votre actuel mot de passe!"})
-    return;
-  }
   
       updatedData.password
       const hash = await bcrypt.hash(updatedData.password, 10);

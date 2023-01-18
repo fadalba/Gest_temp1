@@ -217,9 +217,8 @@ router.route('/updatepassword/:id').put(authorize, async(req, res) => {
   const user =await userSchema.findById(id)
   const comp = await bcrypt.compare(ancienpassword, user.password)
  console.log(bcrypt.compare(ancienpassword, user.password));
-  if(!comp){
+  if(!)){
     res.status(400).json({message: "veuillez saisir votre actuel mot de passe!"})
-    return;
   }
   
       updatedData.password
