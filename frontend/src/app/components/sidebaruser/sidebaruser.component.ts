@@ -31,23 +31,19 @@ export class SidebaruserComponent {
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
-              public router: Router
+              public router: Router,
+              private actRoute: ActivatedRoute
+
   ) {
     //Crontôle de saisie du formulaire
     this.signupForm = this.formBuilder.group({
-        prenom:['',[Validators.required , UsernameValidator.cannotContainSpace]],
-        nom:['',[Validators.required , UsernameValidator.cannotContainSpace]],
-        email:['',[Validators.required,Validators.email]],
-        role:['',Validators.required],
         password:['',[Validators.required,Validators.minLength(8)]],
         passwordConfirm: ['', Validators.required],
-        etat:[0, Validators.required],
-        imageUrl:[""],
-        matricule: ['']
+
     },  { validator: MustMatch('password', 'passwordConfirm')}
   )}
 
-  listDeroulant=['Administrateur','Utilisateur'];
+
 
   ngOnInit() {}
 
@@ -65,10 +61,10 @@ export class SidebaruserComponent {
       this.preview = reader.result as string;
     };
     reader.readAsDataURL(file);
-  }
+  } 
 
 //Fonction pour l'inscription
-  registerUser() {
+  /* registerUser() {
     this.submitted = true;
     if(this.signupForm.invalid){
       return;
@@ -102,25 +98,51 @@ export class SidebaruserComponent {
             });window.setTimeout(function(){location.reload()},1000)
              break;
         }
-    } , // Intercepter les messages d'erreurs du serveur
-    error => {
+    } ,  */// Intercepter les messages d'erreurs du serveur
+    /* error => {
       this.errMsg = error.error.error
       console.log(this.errMsg)
-    });
+    }); */
+    updatepass(){
+      let id = this.actRoute.snapshot.paramMap.get('id');
+      const user ={
+    password: this.signupForm.value.password,
+
+   }
+   this.submitted = true;
+   if(this.signupForm.invalid){
+     return;
+   }
+      this.authService.updatepassword(id, user).subscribe(
+        data=>{
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Modification réussi !',
+            showConfirmButton: false,
+            timer: 1500
+          });window.setTimeout(function(){location.reload()},1000)
+        },
+        error => {
+          this.errMsg = false
+          setTimeout(()=>{ this.errMsg = true}, 2000);
+        });
+    }
 
 
     }
 
-  
 
 
-  
 
-  
 
-  
 
-   
-}
+
+
+
+
+
+
 
 
