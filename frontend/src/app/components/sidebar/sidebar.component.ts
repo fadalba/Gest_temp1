@@ -67,6 +67,7 @@ export class SidebarComponent implements OnInit{
   )
   //Crontôle de saisie du formulaire
   this.updateForm = this.formBuilder.group({
+    ancienpassword:['',[Validators.required,Validators.minLength(8)]],
     password:['',[Validators.required,Validators.minLength(8)]],
     passwordConfirm: ['', Validators.required],
 
@@ -142,6 +143,7 @@ export class SidebarComponent implements OnInit{
       let id = this.actRoute.snapshot.paramMap.get('id');
       const user ={
     password: this.updateForm.value.password,
+    ancienpassword: this.updateForm.value.ancienpassword
 
    }
    this.submitted = true;
@@ -160,8 +162,10 @@ export class SidebarComponent implements OnInit{
           });window.setTimeout(function(){location.reload()},1000)
         },
         error => {
-          this.errMsg = false
-          setTimeout(()=>{ this.errMsg = true}, 2000);
+          console.log(error);
+
+          this.errMsg = "veuillez saisir votre actuel mot de passe!"
+          setTimeout(()=>{ this.errMsg = false}, 2000);
         });
     }
 
