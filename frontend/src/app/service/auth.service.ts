@@ -10,7 +10,7 @@ import {
 import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
-})
+})  
 export class AuthService {
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -89,7 +89,6 @@ deleteUser(id: any): Observable<any> {
     let api = `${this.endpoint}/user-profile/${id}`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
-
         return res || {};
       }),
       catchError(this.handleError)
@@ -107,13 +106,4 @@ deleteUser(id: any): Observable<any> {
     }
     return throwError(msg);
   }
-
-
-  // Update
-updatepassword(id: any, data: any): Observable<any> {
-  let API_URL = `${this.endpoint}/updatepassword/${id}`;
-  return this.http
-    .put(API_URL, data, { headers: this.headers })
-    .pipe(catchError(this.handleError));
-}
 }

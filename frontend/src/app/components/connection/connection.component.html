@@ -1,4 +1,4 @@
-   <body>
+   <body>  
     <div class="row g-3 my-5">
         <form class="row g-3 d-flex justify-content-center bg-light" [formGroup]="registerForm" (ngSubmit)="loginUser()" >
           <ng-container *ngIf="this.errMsg">
@@ -8,7 +8,7 @@
           <div class="profil justify-center">
             <img class="img-fluid rounded-circle" [src]="imageUrl" alt="">
             <img src="./assets/weather-icon.svg" class="img-Climat">
-          </div>
+          </div>           
           <div class="form-group inputs">
             <label for="email">Adresse Email</label>
             <input [ngClass]="{'is-invalid':submitted && registerForm.controls['email'].errors}" formControlName="email" type="email" class="form-control">
@@ -36,7 +36,9 @@
           <div class="form-group">
             <button class="btn btn-outline-danger">Se connecter</button>
           </div>
-          
+          <!-- <a href="" routerLink="/sign-up" class="col-md-8 d-flex justify-content-end text-decoration-none">
+            S'inscrire ?
+          </a> -->
         </form>
       </div>
   </body>

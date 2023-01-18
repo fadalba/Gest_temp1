@@ -20,7 +20,7 @@ import { TestComponent } from './components/test/test.component';
   declarations: [
     AppComponent,
     ConnectionComponent,
-    
+   
     HeaderComponent,
     TableauComponent,
     PageAdminComponent,
