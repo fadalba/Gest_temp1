@@ -27,9 +27,9 @@ import { HttpEvent } from '@angular/common/http';
 })
 export class SidebarComponent implements OnInit{
   public sidebarShow: boolean = false;
-  
-  currentUser: any = {};
 
+  currentUser: any = {};
+  updateForm!: FormGroup;
   signupForm: FormGroup;
   submitted=false;
   check= false;
@@ -65,13 +65,21 @@ export class SidebarComponent implements OnInit{
         imageUrl:[""],
         matricule: ['']
     },  { validator: MustMatch('password', 'passwordConfirm')}
-  )}
+  )
+  //Crontôle de saisie du formulaire
+  this.updateForm = this.formBuilder.group({
+    password:['',[Validators.required,Validators.minLength(8)]],
+    passwordConfirm: ['', Validators.required],
+
+},  { validator: MustMatch('password', 'passwordConfirm')}
+)
+}
 
   listDeroulant=['Administrateur','Utilisateur'];
 
   ngOnInit() {}
 
-  // Fonction pour télécharger l'mage 
+  // Fonction pour télécharger l'mage
   uploadFile(event: any) {
 
     const file = event.target.files[0];
@@ -102,8 +110,8 @@ export class SidebarComponent implements OnInit{
     this.submitted=false
     //générer matricule pour administrateur et utilisateur
     let matriculeGenerate;
-    this.signupForm.value.role =="Administrateur" ? matriculeGenerate= "MAT"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1))
-      :matriculeGenerate= "MUT"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
+    this.signupForm.value.role =="Administrateur" ? matriculeGenerate= "ADM"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1))
+      :matriculeGenerate= "UTI"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
       this.signupForm.controls.matricule.setValue(matriculeGenerate)
 
     this.authService.signUp(this.signupForm.value.prenom, this.signupForm.value.nom,
@@ -135,7 +143,41 @@ export class SidebarComponent implements OnInit{
     });
 
 
+  }
+
+    updatepass(){
+      let id = this.actRoute.snapshot.paramMap.get('id');
+      const user ={
+    password: this.updateForm.value.password,
+
+   }
+   this.submitted = true;
+   if(this.updateForm.invalid){
+     return;
+   }
+      this.authService.updatepassword(id, user).subscribe(
+        data=>{
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Modification réussi !',
+            showConfirmButton: false,
+            timer: 1500
+          });window.setTimeout(function(){location.reload()},1000)
+        },
+        error => {
+          this.errMsg = false
+          setTimeout(()=>{ this.errMsg = true}, 2000);
+        });
     }
 
+<<<<<<< HEAD
     
 }
+=======
+
+
+
+}
+>>>>>>> dev

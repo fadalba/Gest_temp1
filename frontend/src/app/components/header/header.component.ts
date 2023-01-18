@@ -1,18 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from './../../service/auth.service';
+import { DatePipe } from '@angular/common';
+import {formatDate} from '@angular/common';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [DatePipe]
 })
 export class HeaderComponent implements OnInit {
   currentUser: any = {};
 
+  currentDate = new Date();
+
+
   constructor(
     public authService: AuthService,
     private actRoute: ActivatedRoute
+
   ) {
     // Recuperer les informations de l'utilisateur
     let id = this.actRoute.snapshot.paramMap.get('id');
@@ -23,7 +31,15 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() { }
+<<<<<<< HEAD
   logout() {
     this.authService.doLogout()
   }
+=======
+  deconection(){
+    this.authService.doLogout();
+  }
+
+
+>>>>>>> dev
 }

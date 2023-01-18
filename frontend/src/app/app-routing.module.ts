@@ -1,3 +1,4 @@
+
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ConnectionComponent } from './components/connection/connection.component';
@@ -12,14 +13,14 @@ import { AuthGuard } from "./service/auth.guard";
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
   { path: 'log-in', component:ConnectionComponent},
-  // { path: 'sign-up', component: InscriptionComponent },
-  // { path: 'side', component: SidebarComponent },
-  //  { path: 'tabActif', component: AffichageactiforUserComponent },
-  // { path: 'tabArchives', component: TableArchiveComponent },
-  // { path: ' EspaceUser', component: EspaceutilisateurComponent },
-  { path: ' bd', component: PageAdminComponent },
-  // { path: 'ListActifs', component: AffichageActifsComponent },
-  // { path: 'listArchives', component: AffichageArchivesComponent},
+  // { path: 'sign-up', component: InscriptionComponent , canActivate: [AuthGuard]},
+  // { path: 'side', component: SidebarComponent , canActivate: [AuthGuard]},
+  //  { path: 'tabActif', component: AffichageactiforUserComponent , canActivate: [AuthGuard]},
+  // { path: 'tabArchives', component: TableArchiveComponent , canActivate: [AuthGuard]},
+  // { path: 'EspaceUser', component: EspaceutilisateurComponent , canActivate: [AuthGuard]},
+  { path: 'bd', component: PageAdminComponent , canActivate: [AuthGuard]},
+  // { path: 'ListActifs', component: AffichageActifsComponent , canActivate: [AuthGuard]},
+  // { path: 'listArchives', component: AffichageArchivesComponent , canActivate: [AuthGuard]},
   { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] }
 ];
 
