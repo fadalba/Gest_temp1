@@ -42,10 +42,11 @@ export class PageAdminComponent {
 ) {
 
 //Recuperer les informations de l'utilisateur
-let id = this.actRoute.snapshot.paramMap.get('id');
-this.authService.getUserProfile(id).subscribe((res) => {
-this.currentUser = res.msg;
-});
+// let id = this.actRoute.snapshot.paramMap.get('id');
+// let id = localStorage.getItem('id')?.replaceAll('"', '');
+// this.authService.getUserProfile(id).subscribe((res) => {
+// this.currentUser = res.msg;
+//});
 //Crontôle de saisie du formulaire
 this.signupForm = this.formBuilder.group({
 prenom:['',[Validators.required , UsernameValidator.cannotContainSpace]],

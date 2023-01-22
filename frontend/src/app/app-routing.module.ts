@@ -27,7 +27,10 @@ const routes: Routes = [
  
   { path: ' bd', component: PageAdminComponent },
   
-  { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] }
+  { path: 'user-profile', component: PageAdminComponent, canActivate: [AuthGuard] },
+  { path: 'actif', component: TableauComponent, canActivate: [AuthGuard] },
+  { path: 'archives', component: TableArchiveComponent, canActivate: [AuthGuard] },
+  { path: 'dash', component: PageAdminComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

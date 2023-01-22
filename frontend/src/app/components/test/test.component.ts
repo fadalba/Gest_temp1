@@ -27,7 +27,7 @@ export class TestComponent {
   preview!: string;
   percentDone?: any = 0;
   errMsg: any;
-  show:boolean = false
+  show:boolean = false; nbrActifs!:number
 
 
 
@@ -39,7 +39,8 @@ export class TestComponent {
   ) {
 
     //Recuperer les informations de l'utilisateur
-    let id = this.actRoute.snapshot.paramMap.get('id');
+    // let id = this.actRoute.snapshot.paramMap.get('id');
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
     this.currentUser = res.msg;
     });

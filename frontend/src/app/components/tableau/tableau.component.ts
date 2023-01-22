@@ -24,7 +24,8 @@ export class TableauComponent implements OnInit {
 
 
   constructor(public authService: AuthService,private activatedRoute: ActivatedRoute,private router: Router,private ngZone: NgZone,public formBuilder: FormBuilder) {
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    /* let id = this.activatedRoute.snapshot.paramMap.get('id'); */
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
       this.currentUser = res.msg;
     });
