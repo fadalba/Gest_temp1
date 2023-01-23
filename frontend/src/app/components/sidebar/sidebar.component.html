@@ -1,16 +1,36 @@
   <!-- <button class="sidebar-open btnsidebar" (click)="sidebarShow = !sidebarShow">
     <i class="bi bi-list"></i>
   </button> -->
-  <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow">
-    <div class="sidebar-content">
+  <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow" style="height: 100%;">
+    <!-- <button class="sidebar-close" (click)="sidebarShow = !sidebarShow">x</button> -->
+    <div *ngIf="this.currentUser.role === 'Administrateur'" class="sidebar-content">
         <h2 class="set-align"></h2>
-        <div  class="set-sidebar-text"><i id="dashboardIcon"class="bi bi-speedometer fa-4x"routerLink="/EspaceAdmin"></i>Tableau de bord</div>
+        <a href="" routerLink="/dash" style="text-decoration: none;">
+           <div class="set-sidebar-text"><i id="dashboardIcon"class="bi bi-speedometer fa-4x"></i>DashbordAdmin</div>
+        </a>
         <!-- <div class="set-sidebar-text"><i class="bi bi-person-fill-gear"></i>Modif<br>mot de passe</div> -->
         <button type="button" class="set-sidebar-text" data-toggle="modal" data-target="#modifpwd"><i class="bi bi-person-fill-gear"></i>Edit</button>
         <!-- <div class="set-sidebar-text"><i class="bi bi-person-add"></i>inscrire </div> -->
         <button type="button" class="set-sidebar-text" data-toggle="modal" data-target="#inscrire"><i class="bi bi-person-add"></i>Inscrire</button>
-        <div class="set-sidebar-text"><i class="bi bi-person-check" routerLink="/ListActifs"></i>Actifs</div>
-        <div class="set-sidebar-text"><i class="bi bi-person-fill-x"routerLink="/listArchives"></i>Archivés</div>
+        <a href="#" routerLink="/actif" style="text-decoration: none;">
+           <div class="set-sidebar-text"><i class="bi bi-person-check" ></i>Actifs</div>
+        </a>
+        <a href="#" routerLink="/archives" style="text-decoration: none;">
+           <div class="set-sidebar-text"><i class="bi bi-person-fill-x"></i>Archivés</div>
+        </a>
+    </div>
+    <!-- Si le gars connecté est un utilisateur simple -->
+    <div *ngIf="this.currentUser.role === 'Utilisateur'" class="sidebar-content">
+        <h2 class="set-align"></h2>
+        <a href="" routerLink="/dash"  style="text-decoration: none;">
+           <div class="set-sidebar-text"><i id="dashboardIcon"class="bi bi-speedometer fa-4x"></i>DashbordUser</div>
+        </a>
+        <!-- <div class="set-sidebar-text"><i class="bi bi-person-fill-gear"></i>Modif<br>mot de passe</div> -->
+        <button type="button" class="set-sidebar-text" data-toggle="modal" data-target="#modifpwd"><i class="bi bi-person-fill-gear"></i>Edit</button>
+        <!-- <div class="set-sidebar-text"><i class="bi bi-person-add"></i>inscrire </div> -->
+        <a href="" routerLink="/actif" style="text-decoration: none;">
+           <div class="set-sidebar-text"><i class="bi bi-person-check" ></i>Actifs</div>
+        </a>
     </div>
   </div>
 
@@ -26,7 +46,7 @@
                   <img src="./assets/weather-icon.svg" class="img-Climat">
               </div>
 
-              <h2 class="text-center">Inscription au système de gestion de personnel et du climat</h2>
+              <h2 class="text-center">Inscription au système de gestion de br personnel et du climat</h2>
               <ng-container *ngIf="this.errMsg">
                   <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
               </ng-container>
@@ -78,7 +98,7 @@
                   </select>
                   <div *ngIf="submitted && signupForm.controls['role'].errors" class="text-danger">
                       <div *ngIf="submitted && signupForm.controls['role'].errors['required']">
-                          Choisisez un rôle
+                          Choisisez un role
                       </div>
                   </div>
               </div>
@@ -110,7 +130,7 @@
                       </div>
                   </div>
               </div>
-                 <!--  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                       <label for="imageUrl">Profil</label>
                       <input formControlName="imageUrl" type="file" (change)="uploadFile($event)" class="form-control"  accept="image/png, image/gif, image/jpeg, image/jpg" >
                   </div> -->

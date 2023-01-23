@@ -11,6 +11,7 @@
                 <h3>34°c</h3>
                 <!-- <i class="bi bi-thermometer-high fa-5x"></i> -->
                 <img class="icTemp"src="https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/high-temperature-icon.svg" alt="">
+                <p style="color: #000000; font-weight: bold; margin-top: 5px;">10h 00</p>
             </div>
         </div>
         <div class="bl11">
@@ -24,16 +25,19 @@
                 <h3>70%</h3>
                 <!-- <i class="bi bi-thermometer-high fa-5x"></i> -->
                 <img class="icHum" src="https://uxwing.com/wp-content/themes/uxwing/download/weather/water-droplet-icon.svg" alt="">
+                <p style="color: #000000; font-weight: bold; margin-top: 5px;">10h 00</p>
             </div>
         </div>
         <div class="bl12" style="display: flex;flex-direction: column;gap: 6px;">
             <div class="fanetalarm">
                <i class="bi bi-fan fa-5x" style="color: #0C7C8F;font-size:50px !important;"></i>
-               <i class="bi bi-bell-fill fa-5x" style="color: red;font-size:50px !important;"></i>
+               <i class="bi bi-bell-fill fa-5x" *ngIf="!allumer" style="color: red;font-size:50px !important;"></i>
+               <i class="bi bi-bell-fill fa-5x" *ngIf="allumer" style="color: rgb(5, 129, 40);font-size:50px !important;"></i>
+
             </div>
             <div class="boutonswitch" style="margin: left 20px;">
-                <label class="switch">
-                    <input type="checkbox" checked>
+                <label class="switch" >
+                    <input type="checkbox"  (click)="allumerVent()">
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -78,15 +82,15 @@
                 </div>
             </div>
         </div>
-        <div class="blc22">
+        <div class="blc22" style="height: 100%;">
             <div class="haut">
-                <a class="text-decoration-none" href=""routerLink="/ListActifs">
+                <a href=""routerLink="/actif" style="text-decoration: none;">
                     <i class="bi bi-people-fill" style="color: green;font-size:60px !important;"></i>
                     <h3>Liste Actifs</h3>
                 </a>
             </div>
-            <div class="bas">
-                <a class="text-decoration-none" href="" routerLink="/listArchives">
+            <div *ngIf="this.currentUser.role === 'Administrateur'" class="bas">
+                <a href="" routerLink="/archives" style="text-decoration: none;">
                     <i class="bi bi-person-fill-x" style="color: red;font-size:60px !important;"></i>
                     <h3>Lise Archivés</h3>
                 </a>
@@ -95,11 +99,11 @@
         </div>
 
     </div>
-    <div class="blc3" style="border-radius: 5px;">
-        <div class="hth" style="font-weight: bolder;font-size: large;size: 40px;padding-left: 13%;color: #000000;">Historiques des Températures(°c) et humidité(%)de la semaine</div>
+    <div class="blc3" style="border-radius: 5px;color: #000000;width: 98%; margin-left: 1.1%;padding-top: 1%;justify-content: center;">
+        <div class="hth" style="font-weight: bolder;font-size: large;size: 40px;">Historiques des Températures(°c) et humidité(%)de la semaine</div>
         <table class="table table-bordered border-black">
             <thead>
-              <tr align="center" style="background-color: #17A2B8; color: white;">
+              <tr align="center" style="background-color: #17A2B8;">
                 <th scope="col">Heures/jours</th>
                 <th scope="col">Lundi</th>
                 <th scope="col">Mardi</th>

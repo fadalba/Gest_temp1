@@ -40,7 +40,7 @@ export class ConnectionComponent implements OnInit {
       localStorage.setItem('access_token', res.token);
       this.authService.getUserProfile(res._id).subscribe((res) => {
         this.authService.currentUser = res;
-        this.router.navigate(['user-profile/' + res.msg._id]);
+        this.router.navigate(['user-profile']);
       });
     }, // Intercepter les messages d'erreurs du serveur
     error => {

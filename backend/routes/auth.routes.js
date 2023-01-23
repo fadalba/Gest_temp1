@@ -52,7 +52,7 @@ router.post(
       .not()
       .isEmpty()
       .isLength({ min: 8, max: 16 }),
-  ],authorize,
+  ],
   (req, res, next) => {
     const errors = validationResult(req)
     console.log(req.body)
@@ -140,7 +140,7 @@ router.post('/signin', (req, res, next) => {
 })
 
 // Recuperez tous les utilisateurs
-router.route('/').get(authorize,(req, res, next) => {
+router.route('/').get((req, res, next) => {
   userSchema.find((error, response)=> {
     if (error) {
       return next(error)
@@ -151,7 +151,7 @@ router.route('/').get(authorize,(req, res, next) => {
 })
 
 // Recuperez un utilisateur
-router.route('/read-user/:id').get(authorize,(req, res) => {
+router.route('/read-user/:id').get((req, res) => {
   userSchema.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error);
@@ -175,7 +175,7 @@ router.route('/user-profile/:id').get(authorize, (req, res, next) => {
 })
 
 // Update User
-router.route('/update-user/:id').put(authorize,(req, res, next) => {
+router.route('/update-user/:id').put((req, res, next) => {
   userSchema.findByIdAndUpdate(
     req.params.id,
     {
@@ -193,7 +193,7 @@ router.route('/update-user/:id').put(authorize,(req, res, next) => {
 })
 
 // Delete User
-/* router.route('/delete-user/:id').delete(authorize,(req, res, next) => {
+router.route('/delete-user/:id').delete((req, res, next) => {
   userSchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error)
@@ -204,6 +204,7 @@ router.route('/update-user/:id').put(authorize,(req, res, next) => {
     }
   })
 })
+
  */
 
 // Modification mot de passe
@@ -235,5 +236,5 @@ router.route('/updatepassword/:id').put(authorize, async(req, res) => {
   }
   })
 
-module.exports = router
 
+module.exports = router

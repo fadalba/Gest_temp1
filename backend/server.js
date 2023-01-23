@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const api = require('./routes/auth.routes')
 
 mongoose
-  .connect('mongodb://localhost:27017/gestionTemp') 
+  .connect('mongodb://localhost:27017/notreBD') 
   
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -51,3 +51,7 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
 })
+
+
+// ici la partie iot
+

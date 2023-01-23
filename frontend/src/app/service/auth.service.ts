@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  updatepassword(id: string | null, user: { password: any; ancienpassword: any; }) {
+    return this.http.put(`${this.endpoint}/updatepassword/${id}`, user)
+  }
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
@@ -70,6 +73,12 @@ deleteUser(id: any): Observable<any> {
   signIn(user: User) {
     return this.http
       .post<any>(`${this.endpoint}/signin`, user)
+      .pipe(map(user => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        console.log(user)
+        localStorage.setItem('id', user._id);
+        return user;
+      }));
   }
   getToken() {
     return localStorage.getItem('access_token');
@@ -89,7 +98,6 @@ deleteUser(id: any): Observable<any> {
     let api = `${this.endpoint}/user-profile/${id}`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res) => {
-
         return res || {};
       }),
       catchError(this.handleError)
@@ -108,12 +116,6 @@ deleteUser(id: any): Observable<any> {
     return throwError(msg);
   }
 
+  //recuperation nombre actifs
 
-  // Update
-updatepassword(id: any, data: any): Observable<any> {
-  let API_URL = `${this.endpoint}/updatepassword/${id}`;
-  return this.http
-    .put(API_URL, data, { headers: this.headers })
-    .pipe(catchError(this.handleError));
-}
 }
