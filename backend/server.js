@@ -51,6 +51,7 @@ app.use(function (err, req, res, next) {
   res.status(err.statusCode).send(err.message)
 })
 
+<<<<<<< HEAD
 /* *********************** Notre websocket************************ */
 
 // on install avec npm install http, url et ws
@@ -114,3 +115,8 @@ function broadcast(msg) {
 //Maintenant, lorsque vous relancez le serveur Node et que vous allez sur l’url :
 
 //http://localhost:8080/broadcast?message=Hello
+=======
+
+// ici la partie iot
+
+>>>>>>> 8bc2ecb8e7f856a6207422d0423439b84b77dca0

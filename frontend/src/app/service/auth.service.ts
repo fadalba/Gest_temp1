@@ -70,6 +70,12 @@ deleteUser(id: any): Observable<any> {
   signIn(user: User) {
     return this.http
       .post<any>(`${this.endpoint}/signin`, user)
+      .pipe(map(user => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        console.log(user)
+        localStorage.setItem('id', user._id);
+        return user;
+      }));
   }
   getToken() {
     return localStorage.getItem('access_token');
@@ -106,4 +112,7 @@ deleteUser(id: any): Observable<any> {
     }
     return throwError(msg);
   }
+
+  //recuperation nombre actifs
+  
 }

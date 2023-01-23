@@ -28,18 +28,20 @@ export class SidebarComponent {
   preview!: string;
   percentDone?: any = 0;
   errMsg: any;
+  show:boolean = false
 
 
 
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
-              private actRoute: ActivatedRoute,
+              /* private actRoute: ActivatedRoute, */
               public router: Router
   ) {
 
     //Recuperer les informations de l'utilisateur
-    let id = this.actRoute.snapshot.paramMap.get('id');
+    /* let id = this.actRoute.snapshot.paramMap.get('id'); */
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
     this.currentUser = res.msg;
     });
@@ -76,7 +78,13 @@ export class SidebarComponent {
     };
     reader.readAsDataURL(file);
   }
+  public afficher():void{
+    this.show = true
+  }
 
+  public afficher1():void{
+    this.show = false
+  }
 //Fonction pour l'inscription
   registerUser() {
     this.submitted = true;
@@ -120,4 +128,9 @@ export class SidebarComponent {
 
 
     }
+
 }
+
+
+    
+
