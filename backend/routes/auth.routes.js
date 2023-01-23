@@ -205,7 +205,7 @@ router.route('/delete-user/:id').delete((req, res, next) => {
   })
 })
 
- */
+ 
 
 // Modification mot de passe
 router.route('/updatepassword/:id').put(authorize, async(req, res) => {
