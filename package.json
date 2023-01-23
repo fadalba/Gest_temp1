@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fadalba/Gest_temp1/issues"
   },
-  "homepage": "https://github.com/fadalba/Gest_temp1#readme"
+  "homepage": "https://github.com/fadalba/Gest_temp1#readme",
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1"
+  }
 }
