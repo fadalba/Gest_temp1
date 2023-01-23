@@ -1,27 +1,19 @@
 
 <!-- ---------------------------Header----------------------------- -->
-<div class="contener">
-    <app-header></app-header>
+<div class="contener-fluid ">
+    <!-- <app-header></app-header> -->
 <!-- ----------------------------Header-------------------------- -->
  <!-- ici c'est la div qui englobe et le sidebar et le corps du dashboard -->
-    <div class="sidbarEtDashboard">
-
-          <div class="sidebar" *ngIf="this.currentUser.role === 'Administrateur'">
+    <div class="sidbarEtDashboard d-flex justify-content-center w-100"> 
+        
+          <!-- <div class="sidebar">
             <app-sidebar></app-sidebar>
-          </div>
-          <div class="sidebar" *ngIf="this.currentUser.role === 'Utilisateur'">
-            <app-sidebaruser></app-sidebaruser>
-          </div>
-
-        <div class="centralDashboard" *ngIf="this.currentUser.role === 'Administrateur'">
+          </div> -->
+        <!-- <div class="centralDashboard"> -->
           <!-- <app-tableau></app-tableau>    ici je mets le dashboard_Admin de fadal-->
-           <app-test></app-test>
-        </div>
-        <div class="centralDashboard" *ngIf="this.currentUser.role === 'Utilisateur'">
-            <!--<app-table-archive></app-table-archive>  ici je mets le dashboard_Admin de fadal -->
-
-            <app-test2></app-test2>
-        </div>
+           <app-test class="w-100"></app-test>
+        <!-- </div> -->
+        
 
 
     </div><!--fin de la div "sidbarEtDashboard"   -->
