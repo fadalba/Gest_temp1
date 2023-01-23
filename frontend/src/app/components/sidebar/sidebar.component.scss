@@ -38,7 +38,7 @@
     // transform: translateX(-100%);
     // transition: ease-in-out 300ms transform;
     width: 100%;
-    height: 100%;
+    // height: 100%;
      text-align: center;
      margin-top: -5px;
 }
@@ -70,7 +70,7 @@
     color: white;
     font-size: 16px;
     padding: 10px;
-    height: 100%;
+    height: 100%;width: 100%;text-align: center;
     margin-top:8px;
     
 }
@@ -91,13 +91,14 @@
 }
 
 
+
 .bi{
     font-size:40px !important;
 }
 
 #dashboardIcon
 {
-    font-size:30px !important;
+    font-size:50px !important;
 }
 
 
@@ -224,3 +225,4 @@ span
     justify-content: center;
 }
 #anuler{background-color: red;}
+

@@ -1,7 +1,5 @@
-
-<div class="my-5" style="width: 100%;height: 90%;margin-top: 0px;">
-   <!-- -------------------Icone liste --------------- -->
-    <!-- -------------------Recherche---------------- -->
+<div class="my-5" style="background-color: #F5F5F5; margin-left: 1.5%; height: 85.5%;">
+  <!-- -------------------Recherche---------------- -->
   <div class="form-group col-md-3">
     <div class="input-group">
     <span class="input-group-text" id="inputGroupPrepend2"><i class="bi bi-search"></i></span>
@@ -13,37 +11,37 @@
     </div>
   </div>
   <!-- -------------------Recherche---------------- -->
-
-  <table class="table table-hover w-75 my-3">
-    <thead style="text-align: center;">
+  
+  <table class="table table-hover w-75 my-3" style="text-align: center;">
+    <thead>
         <tr class="line">
             <th scope="col">Prenom</th>
             <th scope="col">Nom</th>
             <th scope="col">Email</th>
             <th scope="col">Rôle</th>
-            <th scope="col">Actions</th>
+            <th *ngIf="this.currentUser.role === 'Utilisateur'" scope="col">Date inscription</th>
+            <th *ngIf="this.currentUser.role === 'Administrateur'" scope="col">Actions</th>
         </tr>
     </thead>
     <!-- Recuperer et afficher les informations de la base de donnée -->
-    <tbody  *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght}">
+    <tbody *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght}">
       <tr *ngIf="donnee._id !== this.currentUser._id"> <!-- Pour filter l'utilisateur qui est connecté -->
             <td>{{ donnee.prenom }}</td>
             <td>{{ donnee.nom }}</td>
             <td>{{ donnee.email }}</td>
             <td>{{ donnee.role }}</td>
-            <td>
-
+            <td *ngIf="this.currentUser.role === 'Administrateur'">
               <button class="btn link" (click)="archiver(donnee._id, donnee.etat)">
-                <i class="bi bi-arrow-down-square"></i>
+                <i class="bi bi-arrow-down-square" style="color: red;"></i>
               </button>
               <button class="btn link" data-toggle="modal" data-target="#modifier" (click)="getUserData(donnee._id,donnee.prenom,donnee.nom,donnee.email)">
-                <i class="bi bi-pencil-square"></i>
+                <i class="bi bi-pencil-square" style="color: blue;"></i>
               </button>
               <button class="btn link" (click)="changeRole(donnee._id, donnee.role)">
-                <i class="bi bi-arrow-left-right" ></i>
+                <i class="bi bi-arrow-left-right" style="color: green;"></i>
               </button>
             </td>
-
+            <td *ngIf="this.currentUser.role === 'Utilisateur'">{{ donnee.createdAt | date:'d MMMM yyyy à HH:mm'}} </td>
         </tr>
     </tbody>
   </table>
@@ -104,13 +102,8 @@
   </div>
 </div>
 
-<!-- ---------- fixed-bottom pour fixer la Pagination---------------------- -->
+<!-- ------------------------Pagination---------------------- -->
 <div class="pagination fixed-bottom justify-content-center">
   <pagination-controls (pageChange)="page=$event"></pagination-controls>
 </div>
-
-
-
-
-
 

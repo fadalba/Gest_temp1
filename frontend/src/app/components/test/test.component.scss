@@ -1,18 +1,18 @@
 .container{display: flex;flex-direction: column;gap:0.1px;background-color:#F5F5F5;height: 800px; width: 98%; margin-top: 10px;padding: 1%;}
-.blc1{height: 20%;width: 100%;display: flex;gap: 1%;padding: 1%;}
+.blc1{height: 23%;width: 100%;display: flex;gap: 1%;padding: 1%; }
 .blc2{height: 50%;width: 100%;display:flex;gap: 1%;padding: 1%;}
-.blc3{height: 30%;width: 100%;background-color: #FFFFFF;justify-content: center;box-shadow:3px 5px 5px black;}
+.blc3{height: 27%;width: 100%;background-color: #FFFFFF;justify-content: center;box-shadow:3px 5px 5px black;}
 
-.bl1{background-color: #FFFFFF;width: 37%;box-shadow:2px 3px 3px black;height: 100%; display: flex;gap: 1%;}
-.bl11{background-color: #FFFFFF;width: 37%;box-shadow:3px 2px 2px black;height: 100%;display: flex;gap: 1%;}
-.bl12{background-color: #FFFFFF;width: 26%;box-shadow:3px 3px 3px black;height: 100%;display: flex;gap: 1%;flex-direction: column;justify-content: center;vertical-align: middle;padding-left: 10%;}
+.bl1{background-color: #FFFFFF;width: 37%;box-shadow:2px 3px 3px black;height: 100%; display: flex;gap: 1%; border-radius: 15px;}
+.bl11{background-color: #FFFFFF;width: 37%;box-shadow:3px 2px 2px black;height: 100%;display: flex;gap: 1%;border-radius: 15px;}
+.bl12{background-color: #FFFFFF;width: 26%;box-shadow:3px 3px 3px black;height: 100%;display: flex;gap: 1%;flex-direction: column;justify-content: center;vertical-align: middle;padding-left: 10%;border-radius: 15px;}
 
-.blc21{background-color: green;width: 74%;height: 100%;}
-.blc22{background-color: yellow;width: 26%;height: 100%;}
+.blc21{background-color: green;width: 74%;height: 100%;border-radius: 15px;}
+.blc22{background-color: yellow;width: 26%;height: 100%; border-radius: 15px;}
 
 .imTemp
-{width: 45%;height: 98%;padding: 2%;background-color: #ffffff;justify-content: center;padding-left: 4%;}
-.imT{border-radius: 100%; width:98%; height: 98%;}
+{width: 45%;height: 98%;padding: 2%;background-color: #ffffff;justify-content: center;padding-left: 4%; border-radius: 15px;}
+.imT{border-radius: 100%; width:98%; height: 98%;border-radius: 15px;}
 .textTemp{width: 55%;height: 98%;text-align: center;
 vertical-align: middle;}
 
@@ -27,13 +27,13 @@ h3{color: whitesmoke;size: 5px;font-size: larger;font-weight: bolder;}
     width: 60px;
     height: 34px;
   }
-  
-  .switch input { 
+
+  .switch input {
     opacity: 0;
     width: 0;
     height: 0;
   }
-  
+
 
   .slider {
     position: absolute;
@@ -46,7 +46,7 @@ h3{color: whitesmoke;size: 5px;font-size: larger;font-weight: bolder;}
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -58,26 +58,26 @@ h3{color: whitesmoke;size: 5px;font-size: larger;font-weight: bolder;}
     -webkit-transition: .4s;
     transition: .4s;
   }
-  
+
   input:checked + .slider {
     background-color: #2196F3;
   }
-  
+
   input:focus + .slider {
     box-shadow: 0 0 1px #2196F3;
   }
-  
+
   input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-  
+
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }
@@ -86,7 +86,7 @@ h3{color: whitesmoke;size: 5px;font-size: larger;font-weight: bolder;}
 
   //style de la section donnee de la jornee et liste
 
-  // .blc21 
+  // .blc21
   // {
   //   display: flex;flex-direction: column;gap: 3%;
   //   width: 74%;
@@ -99,7 +99,7 @@ h3{color: whitesmoke;size: 5px;font-size: larger;font-weight: bolder;}
   {
     width: 26%;
     height: 98%;
-   
+
     background-color: #FFFFFF;box-shadow:5px 5px 5px black;
     display: flex;
     flex-direction: column; justify-content: center;align-items: center;gap: 3%
@@ -133,6 +133,9 @@ color: #000000; size: 18px;}
 .blc22{box-shadow:5px 5px 5px black;}
 .haut{width: 98%;height: 46%;background-color: #FFFFFF;display: flex;flex-direction: column;gap: 2%; text-align: center;padding: 3%;}
 .bas{width: 98%;height: 46%;background-color: #FFFFFF;display: flex;flex-direction: column;gap: 2%;text-align: center;padding: 3%;}
+
+.bas a:hover{background-color:#F5F5F5;border-radius: 20%;}
+.haut a:hover{background-color:#F5F5F5;border-radius: 20%;}
 
 .textTemp h3{color: #000000;}
 
