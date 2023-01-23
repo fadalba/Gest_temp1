@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
@@ -28,14 +28,15 @@ export class SidebarComponent {
   preview!: string;
   percentDone?: any = 0;
   errMsg: any;
-  show:boolean = false
+  show:boolean = false;
+  updateForm: any;
 
 
 
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
-              /* private actRoute: ActivatedRoute, */
+              private actRoute: ActivatedRoute,
               public router: Router
   ) {
 
@@ -57,7 +58,19 @@ export class SidebarComponent {
         imageUrl:[""],
         matricule: ['']
     },  { validator: MustMatch('password', 'passwordConfirm')}
-  )}
+  )
+   //Crontôle de saisie du formulaire
+   this.updateForm = this.formBuilder.group({
+    ancienpassword:['',[Validators.required,Validators.minLength(8)]],
+    password:['',[Validators.required,Validators.minLength(8)]],
+    passwordConfirm: ['', Validators.required],
+
+},  { validator: MustMatch('password', 'passwordConfirm')}
+)
+}
+
+
+
 
   listDeroulant=['Administrateur','Utilisateur'];
 
@@ -129,8 +142,38 @@ export class SidebarComponent {
 
     }
 
+
+    updatepass(){
+      let id = this.actRoute.snapshot.paramMap.get('id');
+      const user ={
+    password: this.updateForm.value.password,
+    ancienpassword: this.updateForm.value.ancienpassword
+
+   }
+   this.submitted = true;
+   if(this.updateForm.invalid){
+     return;
+   }
+      this.authService.updatepassword(id, user).subscribe(
+            data=>{
+
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Modification réussi !',
+            showConfirmButton: false,
+            timer: 1500
+          });window.setTimeout(function(){location.reload()},1000)
+        },
+           error => {
+          console.log(error);
+
+          this.errMsg = "veuillez saisir votre actuel mot de passe!"
+          setTimeout(()=>{ this.errMsg = false}, 2000);
+        });
+    }
+
+
+
 }
-
-
-    
 

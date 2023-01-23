@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  updatepassword(id: string | null, user: { password: any; ancienpassword: any; }) {
+    return this.http.put(`${this.endpoint}/updatepassword/${id}`, user)
+  }
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
@@ -114,5 +117,5 @@ deleteUser(id: any): Observable<any> {
   }
 
   //recuperation nombre actifs
-  
+
 }

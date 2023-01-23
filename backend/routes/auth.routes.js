@@ -205,4 +205,36 @@ router.route('/delete-user/:id').delete((req, res, next) => {
   })
 })
 
+ 
+
+// Modification mot de passe
+router.route('/updatepassword/:id').put(authorize, async(req, res) => {
+  try {
+  const id = req.params.id;
+  const updatedData = req.body;
+  const options = { new: true };
+  const newpassword= updatedData.password;
+  const ancienpassword= updatedData.ancienpassword
+  const user =await userSchema.findById(id)
+  const comp = await bcrypt.compare(ancienpassword, user.password)
+ console.log(bcrypt.compare(ancienpassword, user.password));
+  if(!comp){
+    res.status(400).json({message: "veuillez saisir votre actuel mot de passe!"})
+    return;
+  }
+  
+      updatedData.password
+      const hash = await bcrypt.hash(updatedData.password, 10);
+      updatedData.password = hash;
+      
+              const result = await userSchema.findByIdAndUpdate(
+              id, updatedData, options);
+            return  res.send(result);        
+  }
+  catch (error) {
+      res.status(400).json({ message: error.message })
+  }
+  })
+
+
 module.exports = router

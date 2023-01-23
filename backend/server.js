@@ -1,12 +1,17 @@
 const express = require('express') 
 const cors = require('cors')
-const bodyParser = require('body-parser') //ça fait quoi ?
+const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
 // Express APIs
 const api = require('./routes/auth.routes')
 
 mongoose
+<<<<<<< HEAD
   .connect('mongodb+srv://fadalba:Thiaroye44@cluster0.daoknxe.mongodb.net/test')
+=======
+  .connect('mongodb://localhost:27017/gestionTemp') 
+  
+>>>>>>> 4719652608f86ff9b05c6482d40df1825a1c8e42
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
