@@ -27,9 +27,9 @@ import { HttpEvent } from '@angular/common/http';
 })
 export class SidebarComponent implements OnInit{
   public sidebarShow: boolean = false;
-
+  
   currentUser: any = {};
-  updateForm!: FormGroup;
+
   signupForm: FormGroup;
   submitted=false;
   check= false;
@@ -37,18 +37,20 @@ export class SidebarComponent implements OnInit{
   preview!: string;
   percentDone?: any = 0;
   errMsg: any;
+  show:boolean = false
 
 
 
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
-              private actRoute: ActivatedRoute,
+              /* private actRoute: ActivatedRoute, */
               public router: Router
   ) {
 
     //Recuperer les informations de l'utilisateur
-    let id = this.actRoute.snapshot.paramMap.get('id');
+    /* let id = this.actRoute.snapshot.paramMap.get('id'); */
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
     this.currentUser = res.msg;
     });
@@ -64,22 +66,13 @@ export class SidebarComponent implements OnInit{
         imageUrl:[""],
         matricule: ['']
     },  { validator: MustMatch('password', 'passwordConfirm')}
-  )
-  //Crontôle de saisie du formulaire
-  this.updateForm = this.formBuilder.group({
-    ancienpassword:['',[Validators.required,Validators.minLength(8)]],
-    password:['',[Validators.required,Validators.minLength(8)]],
-    passwordConfirm: ['', Validators.required],
-
-},  { validator: MustMatch('password', 'passwordConfirm')}
-)
-}
+  )}
 
   listDeroulant=['Administrateur','Utilisateur'];
 
   ngOnInit() {}
 
-  // Fonction pour télécharger l'mage
+  // Fonction pour télécharger l'mage 
   uploadFile(event: any) {
 
     const file = event.target.files[0];
@@ -94,7 +87,13 @@ export class SidebarComponent implements OnInit{
     };
     reader.readAsDataURL(file);
   }
+  public afficher():void{
+    this.show = true
+  }
 
+  public afficher1():void{
+    this.show = false
+  }
 //Fonction pour l'inscription
   registerUser() {
     this.submitted = true;
@@ -104,8 +103,8 @@ export class SidebarComponent implements OnInit{
     this.submitted=false
     //générer matricule pour administrateur et utilisateur
     let matriculeGenerate;
-    this.signupForm.value.role =="Administrateur" ? matriculeGenerate= "ADM"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1))
-      :matriculeGenerate= "UTI"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
+    this.signupForm.value.role =="Administrateur" ? matriculeGenerate= "MAT"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1))
+      :matriculeGenerate= "MUT"+(Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
       this.signupForm.controls.matricule.setValue(matriculeGenerate)
 
     this.authService.signUp(this.signupForm.value.prenom, this.signupForm.value.nom,
@@ -137,39 +136,7 @@ export class SidebarComponent implements OnInit{
     });
 
 
-  }
-
-    updatepass(){
-      let id = this.actRoute.snapshot.paramMap.get('id');
-      const user ={
-    password: this.updateForm.value.password,
-    ancienpassword: this.updateForm.value.ancienpassword
-
-   }
-   this.submitted = true;
-   if(this.updateForm.invalid){
-     return;
-   }
-      this.authService.updatepassword(id, user).subscribe(
-        data=>{
-
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Modification réussi !',
-            showConfirmButton: false,
-            timer: 1500
-          });window.setTimeout(function(){location.reload()},1000)
-        },
-        error => {
-          console.log(error);
-
-          this.errMsg = "veuillez saisir votre actuel mot de passe!"
-          setTimeout(()=>{ this.errMsg = false}, 2000);
-        });
     }
 
-
-
-
+    
 }
