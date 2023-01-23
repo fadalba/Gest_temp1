@@ -15,7 +15,7 @@ import { AuthGuard } from "./service/auth.guard";
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
 
-  { path: 'sidebar', component: SidebarComponent },
+  { path: 'log-in', component: SidebarComponent },
 
   { path: 'header', component: HeaderComponent},
   { path: 'log-in', component: ConnectionComponent },
@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: 'admin', component: TableauComponent },
 
   { path: 'sign-up', component: InscriptionComponent },
- 
   { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] }
 ];
 

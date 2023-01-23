@@ -18,7 +18,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +31,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SidebarComponent,
     SidebarUserComponent,
     DashboardComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -44,7 +41,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormsModule,
     NgxPaginationModule,
 
-
   ],
   providers: [
     {
@@ -52,11 +48,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
       useClass: AuthInterceptor,
       multi: true
     }
-
-
-
   ],
   bootstrap: [AppComponent]
 })
-
-export class AppModule {}
+export class AppModule { }
