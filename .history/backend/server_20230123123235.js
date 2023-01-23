@@ -3,7 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser') //ça fait quoi ?
 const mongoose = require('mongoose')
 // Express APIs
-const api = require('./routes/auth.routes')
+const api = require('./routes/a')
 
 mongoose
   .connect('mongodb://localhost:27017/gestionTemp') 
