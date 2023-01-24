@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  updatepassword(id: any | null, user: { password: any; ancienpassword: any; }) {
+  updatepassword(id: a | null, user: { password: any; ancienpassword: any; }) {
     return this.http.put(`${this.endpoint}/updatepassword/${id}`, user)
   }
   endpoint: string = 'http://localhost:4000/api';
@@ -55,7 +55,7 @@ deleteUser(id: any): Observable<any> {
   // Sign-up
   signUp(prenom: string, nom: string, email: string, role: string, password: string, etat: boolean, imageUrl: File, matricule: String): Observable<any> {
     var formData: any = new FormData();
-      formData.append('prenom', prenom); // append permet d'ajouter à la fin
+      formData.append('prenom', prenom);
       formData.append('nom', nom);
       formData.append('email', email);
       formData.append('role', role);
