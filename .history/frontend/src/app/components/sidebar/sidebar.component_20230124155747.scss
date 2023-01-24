@@ -215,6 +215,11 @@ span
 .profil
 {margin-top: 4px;}
 
+#boutFormModifPwd{
+ display: flex;
+
+ align-items: center;
+}
 .form-group
 {
     justify-content: center;
@@ -245,6 +250,10 @@ span
 }
 
 
+
+
+
+
 .exit
 {
   background: #F5F5F5;
@@ -264,12 +273,14 @@ span
 
 #boutFormModifPwd{
 display: flex;
-margin-left: -7.5%;
+margin: ;
+
 align-items: center;
 }
 .form-group
 {
   justify-content: center;
 }
+
 #anuler{background-color: red;}
 

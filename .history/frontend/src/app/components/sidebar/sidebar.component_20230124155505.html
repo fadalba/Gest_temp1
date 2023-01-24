@@ -1,5 +1,3 @@
-
-
   <!-- <button class="sidebar-open btnsidebar" (click)="sidebarShow = !sidebarShow">
     <i class="bi bi-list"></i>
   </button> -->
@@ -191,7 +189,7 @@
             </div>
         </div>
 
-        <div class="col-md-6" style="margin-left: 25%;">
+        <div class="col-md-6">
             <label for="passwordConfirm">Confirmation mot de passe</label>
             <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
                 formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
@@ -204,8 +202,8 @@
                 </div>
             </div>
         </div>
-      <div class="form-group" id="boutFormModifPwd">
-        <button class="btn btn-outline-danger" style="width: 15%;">Modifié</button>
+      <div class="form-group">
+        <button class="btn btn-outline-danger">Modifié</button>
     </div>
 
   </form>

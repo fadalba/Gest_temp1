@@ -47,6 +47,10 @@
         </tr>
     </tbody>
   </table>
+  <!-- ------------------------Pagination---------------------- -->
+<div class="pagination fixed-bottom justify-content-center">
+  <pagination-controls (pageChange)="page=$event"></pagination-controls>
+</div>
 </div>
 
 <!-- Modal pour la modification -->
@@ -104,8 +108,5 @@
   </div>
 </div>
 
-<!-- ------------------------Pagination---------------------- -->
-<div class="pagination fixed-bottom justify-content-center">
-  <pagination-controls (pageChange)="page=$event"></pagination-controls>
-</div>
+
 
