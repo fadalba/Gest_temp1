@@ -152,7 +152,7 @@ export class SidebarComponent implements OnInit{
     }
 
     updatepass(){
-    let id = localStorage.getItem('id')?.replaceAll('"', '');
+      let id = this.actRoute.snapshot.paramMap.get('id');
       const user ={
     password: this.updateForm.value.password,
     ancienpassword: this.updateForm.value.ancienpassword
