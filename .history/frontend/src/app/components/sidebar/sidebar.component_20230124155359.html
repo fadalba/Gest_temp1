@@ -146,7 +146,7 @@
 </div>
 
 <!-- Modal pour modification mot de passe-->
-<div class="modal fade" id="modifpwd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modifpwd" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <button type="button" class="exit" data-dismiss="modal"><i class="bi bi-x-circle" id="bi"></i></button>
@@ -160,7 +160,7 @@
       <ng-container *ngIf="this.errMsg">
           <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
       </ng-container>
-         <div class=" col-md-6" style="margin-left: 25%;">
+         <div class=" col-md-6">
             <label for="ancienpassword">Ancien mot de passe</label>
             <input [ngClass]="{'is-invalid':submitted && updateForm.controls['ancienpassword'].errors}"
                 formControlName="ancienpassword" type="password" class="form-control" id="pass1">
@@ -175,7 +175,7 @@
             </div>
          </div>
 
-        <div class=" col-md-6" style="margin-left: 25%;">
+        <div class=" col-md-6">
             <label for="password">Nouveau mot de passe</label>
             <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
                 formControlName="password" type="password" class="form-control" id="pass1">
@@ -189,7 +189,7 @@
             </div>
         </div>
 
-        <div class="col-md-6" style="margin-left: 25%;">
+        <div class="col-md-6">
             <label for="passwordConfirm">Confirmation mot de passe</label>
             <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
                 formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
@@ -202,8 +202,8 @@
                 </div>
             </div>
         </div>
-      <div class="form-group" id="boutFormModifPwd">
-        <button class="btn btn-outline-danger" style="width: 15%;">Modifié</button>
+      <div class="form-group">
+        <button class="btn btn-outline-danger">Modifié</button>
     </div>
 
   </form>
