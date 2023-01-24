@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  updatepassword(id: any | null, user: { password: any; ancienpassword: any; }) {
+  updatepassword(id: a | null, user: { password: any; ancienpassword: any; }) {
     return this.http.put(`${this.endpoint}/updatepassword/${id}`, user)
   }
   endpoint: string = 'http://localhost:4000/api';
