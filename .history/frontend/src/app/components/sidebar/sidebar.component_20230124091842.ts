@@ -1,3 +1,14 @@
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-sidebar',
+//   templateUrl: './sidebar.component.html',
+//   styleUrls: ['./sidebar.component.scss']
+// })
+// export class SidebarComponent {
+
+// }
+
 
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from './../../service/auth.service';
@@ -5,21 +16,19 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
-
 @Component({
-  selector: 'app-sidebaruser',
-  templateUrl: './sidebaruser.component.html',
-  styleUrls: ['./sidebaruser.component.scss']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss']
 })
-export class SidebaruserComponent {
-
+export class SidebarComponent implements OnInit{
   public sidebarShow: boolean = false;
 
-
+  currentUser: any = {};
 
   signupForm: FormGroup;
   submitted=false;
@@ -28,22 +37,51 @@ export class SidebaruserComponent {
   preview!: string;
   percentDone?: any = 0;
   errMsg: any;
+  show:boolean = false;
+  updateForm: any;
+
+
+
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
-              public router: Router,
-              private actRoute: ActivatedRoute
-
+              private actRoute: ActivatedRoute,
+              public router: Router
   ) {
+
+    //Recuperer les informations de l'utilisateur
+    /* let id = this.actRoute.snapshot.paramMap.get('id'); */
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
+    this.authService.getUserProfile(id).subscribe((res) => {
+    this.currentUser = res.msg;
+    });
     //Crontôle de saisie du formulaire
     this.signupForm = this.formBuilder.group({
+        prenom:['',[Validators.required , UsernameValidator.cannotContainSpace]],
+        nom:['',[Validators.required , UsernameValidator.cannotContainSpace]],
+        email:['',[Validators.required,Validators.email]],
+        role:['',Validators.required],
         password:['',[Validators.required,Validators.minLength(8)]],
         passwordConfirm: ['', Validators.required],
-
+        etat:[0, Validators.required],
+        imageUrl:[""],
+        matricule: ['']
     },  { validator: MustMatch('password', 'passwordConfirm')}
-  )}
+  )
+   //Crontôle de saisie du formulaire
+   this.updateForm = this.formBuilder.group({
+    ancienpassword:['',[Validators.required,Validators.minLength(8)]],
+    password:['',[Validators.required,Validators.minLength(8)]],
+    passwordConfirm: ['', Validators.required],
+
+},  { validator: MustMatch('password', 'passwordConfirm')}
+)
+}
 
 
+
+
+  listDeroulant=['Administrateur','Utilisateur'];
 
   ngOnInit() {}
 
@@ -61,10 +99,16 @@ export class SidebaruserComponent {
       this.preview = reader.result as string;
     };
     reader.readAsDataURL(file);
-  } 
+  }
+  public afficher():void{
+    this.show = true
+  }
 
+  public afficher1():void{
+    this.show = false
+  }
 //Fonction pour l'inscription
-  /* registerUser() {
+  registerUser() {
     this.submitted = true;
     if(this.signupForm.invalid){
       return;
@@ -98,23 +142,28 @@ export class SidebaruserComponent {
             });window.setTimeout(function(){location.reload()},1000)
              break;
         }
-    } ,  */// Intercepter les messages d'erreurs du serveur
-    /* error => {
+    } , // Intercepter les messages d'erreurs du serveur
+    error => {
       this.errMsg = error.error.error
       console.log(this.errMsg)
-    }); */
+    });
+
+
+    }
+
     updatepass(){
-      let id = this.actRoute.snapshot.paramMap.get('id');
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
       const user ={
-    password: this.signupForm.value.password,
+    password: this.updateForm.value.password,
+    ancienpassword: this.updateForm.value.ancienpassword
 
    }
    this.submitted = true;
-   if(this.signupForm.invalid){
+   if(this.updateForm.invalid){
      return;
    }
       this.authService.updatepassword(id, user).subscribe(
-        data=>{
+            data=>{
 
           Swal.fire({
             position: 'center',
@@ -124,27 +173,14 @@ export class SidebaruserComponent {
             timer: 1500
           });window.setTimeout(function(){location.reload()},1000)
         },
-        error => {
-          this.errMsg = false
+           error => {
           console.log(error);
 
-          setTimeout(()=>{ this.errMsg = true}, 2000);
+          this.errMsg = "veuillez saisir votre actuel mot de passe!"
+          setTimeout(()=>{ this.errMsg = false}, 2000);
         });
     }
 
 
-    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
