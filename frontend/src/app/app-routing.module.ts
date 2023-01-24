@@ -1,7 +1,5 @@
 
 
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-
 import { HeaderComponent } from './components/header/header.component';
 
 import { Component, NgModule } from '@angular/core';
@@ -21,18 +19,17 @@ import { AuthGuard } from "./service/auth.guard";
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
 
-
   { path: 'log-in', component: SidebarComponent },
 
   { path: 'header', component: HeaderComponent},
   { path: 'log-in', component: ConnectionComponent },
-  { path: 'dash', component: DashboardComponent },
+
   { path: 'admin', component: TableauComponent },
 
   /* { path: 'sign-up', component: InscriptionComponent }, */
   { path: 'user-profile/:id', component: PageAdminComponent, canActivate: [AuthGuard] },
 
- 
+
   // { path: 'side', component: SidebarComponent },
   //  { path: 'tabActif', component: AffichageactiforUserComponent },
   //  { path: 'sign-up', component: InscriptionComponent },
@@ -40,9 +37,9 @@ const routes: Routes = [
   //  { path: 'listArchives', component: AffichageArchivesComponent},
   //  { path: ' EspaceUser', component: EspaceutilisateurComponent },
   // { path: 'tabArchives', component: TableArchiveComponent },
- 
+
   { path: ' bd', component: PageAdminComponent },
-  
+
   { path: 'user-profile', component: PageAdminComponent, canActivate: [AuthGuard] },
   { path: 'actif', component: TableauComponent, canActivate: [AuthGuard] },
   { path: 'archives', component: TableArchiveComponent, canActivate: [AuthGuard] },

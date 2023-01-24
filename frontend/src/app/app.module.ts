@@ -14,8 +14,7 @@ import { TableArchiveComponent } from './components/table-archive/table-archive.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TestComponent } from './components/test/test.component';
-import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -27,8 +26,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
         PageAdminComponent,
         TableArchiveComponent,
         SidebarComponent,
-        SidebarUserComponent,
-        DashboardComponent,
+   
         TestComponent
     ],
     providers: [
@@ -47,7 +45,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
         Ng2SearchPipeModule,
         FormsModule,
         NgxPaginationModule,
-        
+
     ]
 })
 export class AppModule { }
