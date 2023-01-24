@@ -46,7 +46,7 @@
                   <img src="./assets/weather-icon.svg" class="img-Climat">
               </div>
 
-              <h2 class="text-center">Inscription au système de gestion de  personnel et du climat</h2>
+              <h2 class="text-center">Inscription au système de gestion de br personnel et du climat</h2>
               <ng-container *ngIf="this.errMsg">
                   <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
               </ng-container>
@@ -151,7 +151,7 @@
     <div class="modal-content">
       <button type="button" class="exit" data-dismiss="modal"><i class="bi bi-x-circle" id="bi"></i></button>
       <form [formGroup]="updateForm" (ngSubmit)="updatepass()" id="leform" class="row g-3 my-5"
-      enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+      enctype="multipart/form-data">
       <div class="profil justify-center">
           <img src="./assets/weather-icon.svg" class="img-Climat">
       </div>
@@ -160,7 +160,10 @@
       <ng-container *ngIf="this.errMsg">
           <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
       </ng-container>
-         <div class=" col-md-6" style="margin-left: 25%;">
+
+      <!-- <div class="d-flex "> -->
+
+         <div class=" col-md-6">
             <label for="ancienpassword">Ancien mot de passe</label>
             <input [ngClass]="{'is-invalid':submitted && updateForm.controls['ancienpassword'].errors}"
                 formControlName="ancienpassword" type="password" class="form-control" id="pass1">
@@ -175,7 +178,7 @@
             </div>
          </div>
 
-        <div class=" col-md-6" style="margin-left: 25%;">
+        <div class=" col-md-6">
             <label for="password">Nouveau mot de passe</label>
             <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
                 formControlName="password" type="password" class="form-control" id="pass1">
@@ -189,9 +192,9 @@
             </div>
         </div>
 
-        <div class="col-md-6" style="margin-left: 25%;">
-            <label for="passwordConfirm">Confirmation mot de passe</label>
-            <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}"
+        <label for="passwordConfirm" class="text">Confirmation mot de passe</label>
+        <div class="col-md-12 d-flex justify-content-center border">
+            <input [ngClass]="{'is-invalid':submitted && updateForm.controls['password'].errors}" style="max-width: 50%;"
                 formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
             <div *ngIf="submitted && updateForm.controls['passwordConfirm'].errors" class="text-danger">
                 <div *ngIf="submitted && updateForm.controls['passwordConfirm'].errors['required']">
@@ -202,8 +205,12 @@
                 </div>
             </div>
         </div>
-      <div class="form-group" id="boutFormModifPwd">
-        <button class="btn btn-outline-danger" style="width: 15%;">Modifié</button>
+
+
+      <!-- </div> -->
+
+      <div class="form-group">
+        <button class="btn btn-outline-danger">Modifié</button>
     </div>
 
   </form>

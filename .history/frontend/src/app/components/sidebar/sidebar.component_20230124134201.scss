@@ -215,61 +215,18 @@ span
 .profil
 {margin-top: 4px;}
 
+#boutFormModifPwd{
+ display: flex;
+
+ align-items: center;
+}
 .form-group
 {
     justify-content: center;
 }
-.modal{
-  background: rgba(0,0,0,0.7);
-}
+#conf{
+  jus
 
-
-
-
-.modal-content{background-color: #F5F5F5;width: 700px;height: 700px; padding: 0px 3%;}
-
-
-.row g-3 my-5{width: 90%;}
-
-
-.modal-header
-{
-  justify-content: center;
-
-
-}.modal-title
-{
-  color: #000000;
-  font-weight: 700;
-
-}
-
-
-.exit
-{
-  background: #F5F5F5;
-  color: #000000;
-  font-weight: bolder;
-  border: none;
- font-size: larger;
-  top: -3px;
- margin-left: 600px;
- width: 30px;
-}#bi:hover{background-color: #F90303;}
-.row g-3 my-5
-{margin-top: 0px;background-color: red;}
-.profil
-{margin-top: 4px;}
-
-
-#boutFormModifPwd{
-display: flex;
-margin-left: -7.5%;
-align-items: center;
-}
-.form-group
-{
-  justify-content: center;
 }
 #anuler{background-color: red;}
 
