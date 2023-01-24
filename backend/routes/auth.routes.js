@@ -6,7 +6,7 @@ const userSchema = require('../models/User')
 const authorize = require('../middlewares/auth')
 const { check, validationResult } = require('express-validator')
 mongoose = require('mongoose')
-multer = require('multer') // pour télécharger les photos
+multer = require('multer')
 
 // Téléchargement de la photo avec multer
 const DIR = './images/'
