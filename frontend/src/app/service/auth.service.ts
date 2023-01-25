@@ -55,7 +55,7 @@ deleteUser(id: any): Observable<any> {
   // Sign-up
   signUp(prenom: string, nom: string, email: string, role: string, password: string, etat: boolean, imageUrl: File, matricule: String): Observable<any> {
     var formData: any = new FormData();
-      formData.append('prenom', prenom);
+      formData.append('prenom', prenom); // append permet d'ajouter à la fin
       formData.append('nom', nom);
       formData.append('email', email);
       formData.append('role', role);

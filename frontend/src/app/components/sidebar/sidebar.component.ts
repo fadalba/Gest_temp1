@@ -1,14 +1,3 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-sidebar',
-//   templateUrl: './sidebar.component.html',
-//   styleUrls: ['./sidebar.component.scss']
-// })
-// export class SidebarComponent {
-
-// }
-
 
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from './../../service/auth.service';
@@ -20,12 +9,14 @@ import Swal from 'sweetalert2';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent {
+
   public sidebarShow: boolean = false;
 
   currentUser: any = {};
@@ -151,6 +142,7 @@ export class SidebarComponent implements OnInit{
 
     }
 
+
     updatepass(){
     let id = localStorage.getItem('id')?.replaceAll('"', '');
       const user ={
@@ -184,3 +176,4 @@ export class SidebarComponent implements OnInit{
 
 
 }
+
