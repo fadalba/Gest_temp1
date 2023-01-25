@@ -1,6 +1,6 @@
 const express = require('express') 
 const cors = require('cors')
-const bodyParser = require('body-parser') //ça fait quoi ?
+const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
 // Express APIs
 const api = require('./routes/auth.routes')
@@ -33,7 +33,7 @@ app.use('/api', api)
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 4005
+const port = process.env.PORT || 4000
 
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
