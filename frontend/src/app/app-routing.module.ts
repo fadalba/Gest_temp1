@@ -24,9 +24,9 @@ const routes: Routes = [
   //  { path: 'listArchives', component: AffichageArchivesComponent},
   //  { path: ' EspaceUser', component: EspaceutilisateurComponent },
   // { path: 'tabArchives', component: TableArchiveComponent },
- 
+
   { path: ' bd', component: PageAdminComponent },
-  
+
   { path: 'user-profile', component: PageAdminComponent, canActivate: [AuthGuard] },
   { path: 'actif', component: TableauComponent, canActivate: [AuthGuard] },
   { path: 'archives', component: TableArchiveComponent, canActivate: [AuthGuard] },
