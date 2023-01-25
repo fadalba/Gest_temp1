@@ -1,4 +1,5 @@
-
+import { Subscriber } from 'rxjs';
+import { IotService } from './../../service/iot.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from './../../service/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,6 +10,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
+
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -29,6 +32,10 @@ export class TestComponent {
   errMsg: any;
   show:boolean = false; nbrActifs!:number
   allumer:boolean = false;
+  IotService: any;
+  dataiot: any;
+  temperature: any;
+  humidite: any;
 
 
 
@@ -61,7 +68,19 @@ export class TestComponent {
 
   listDeroulant=['Administrateur','Utilisateur'];
 
-  ngOnInit() {}
+  ngOnInit() {
+    // coté iot
+    this.IotService.iot().Subscribe((data:any) => {
+      console.log(data);
+      /* this.dataiot=data;
+      console.log(this.dataiot?.temp)
+      this.temperature = this.dataiot?.temp;
+      this.humidite=this.dataiot?.humidite;
+      console.log(this.temperature)
+      console.log(this.humidite);
+             */
+    })
+  }
 
   // Fonction pour télécharger l'mage
   uploadFile(event: any) {

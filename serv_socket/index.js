@@ -128,7 +128,7 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 15 && min == 51 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+    if ((heur == 16 && min == 32 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
         var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
         var humi = parseInt(temp[1]);
         console.log("Données" + tempe);
