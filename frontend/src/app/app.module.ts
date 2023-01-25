@@ -16,39 +16,36 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TestComponent } from './components/test/test.component';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ConnectionComponent,
-   
-    HeaderComponent,
-    TableauComponent,
-    PageAdminComponent,
-    TableArchiveComponent,
-   
-    SidebarComponent,
-   
-    TestComponent,
-    
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    Ng2SearchPipeModule,
-    FormsModule,
-    NgxPaginationModule
 
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+@NgModule({
+    declarations: [
+        AppComponent,
+        ConnectionComponent,
+        HeaderComponent,
+        TableauComponent,
+        PageAdminComponent,
+        TableArchiveComponent,
+        SidebarComponent,
+   
+        TestComponent
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        Ng2SearchPipeModule,
+        FormsModule,
+        NgxPaginationModule,
+
+    ]
 })
 export class AppModule { }
