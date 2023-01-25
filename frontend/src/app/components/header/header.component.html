@@ -1,23 +1,25 @@
-
 <header class="header">
   <div class="menu_admin">
       <div class="infos">
           <div>
               <div class="profil d-flex justify-center">
-                  <img [src]="currentUser.imageUrl" class="img-fluid rounded-circle"  alt="">
+                  <img src="assets/logo.png" class="img-fluid rounded-circle"  alt="photo de profil">
               </div>
           </div>
-          <div class="nom">
-            <h3>{{ this.currentUser.prenom }} {{ this.currentUser.nom }}</h3>
-            <p>Matricule</p>
+          <div class="contpDat" style="display:flex">
+            <div class="nom">
+              <h3>{{ this.currentUser.prenom }} {{ this.currentUser.nom }}</h3>
+              <p>{{ this.currentUser.matricule }}</p>
+            </div>
+            <h3 class="nom" style="color: #FFFFFF; margin-left: 300px;">{{currentDate | date:'dd -MM -yyyy'}}</h3>
           </div>
+
       </div>
       <div class="end">
-        <a class="m-1" routerLink="/user-profile/:id"><i style="font-size: 25px;" class="bi bi-person-plus"></i> Actives</a>
-          <a class="m-1" routerLink="/archives"><i style="font-size: 25px;" class="bi bi-person-x"></i> Archives</a>
-          <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-              <i style="font-size: 25px;" class="bi bi-gear-fill"></i>
-          </button>
+        <h3 style="color: #FFFFFF;">{{this.currentUser.ti}}</h3>
+      </div>
+      <div class="end">
+        <a (click)="logout()" *ngIf="this.authService.isLoggedIn" href=""><i id="bi" class="bi bi-box-arrow-left"></i></a>
       </div>
   </div>
 </header>

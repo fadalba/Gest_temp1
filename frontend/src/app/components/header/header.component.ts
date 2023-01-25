@@ -9,13 +9,14 @@ import { AuthService } from './../../service/auth.service';
 })
 export class HeaderComponent implements OnInit {
   currentUser: any = {};
-
+  currentDate = new Date();
   constructor(
     public authService: AuthService,
     private actRoute: ActivatedRoute
   ) {
     // Recuperer les informations de l'utilisateur
-    let id = this.actRoute.snapshot.paramMap.get('id');
+    // let id = this.actRoute.snapshot.paramMap.get('id');
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
       this.currentUser = res.msg;
     });
@@ -23,4 +24,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() { }
+  logout() {
+    this.authService.doLogout()
+  }
 }

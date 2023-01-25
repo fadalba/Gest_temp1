@@ -6,49 +6,46 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnectionComponent } from './components/connection/connection.component';
-import { InscriptionComponent } from './components/inscription/inscription.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TableauComponent } from './components/tableau/tableau.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { PageAdminComponent } from './components/page-admin/page-admin.component';
 import { TableArchiveComponent } from './components/table-archive/table-archive.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ModifierComponent } from './components/modifier/modifier.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SidebarUserComponent } from './components/sidebar-user/sidebar-user.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TestComponent } from './components/test/test.component';
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ConnectionComponent,
-    InscriptionComponent,
-    HeaderComponent,
-    TableauComponent,
-    PageAdminComponent,
-    TableArchiveComponent,
-    ModifierComponent,
-    SidebarComponent,
-    SidebarUserComponent,
-    DashboardComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    Ng2SearchPipeModule,
-    FormsModule,
-    NgxPaginationModule,
+    declarations: [
+        AppComponent,
+        ConnectionComponent,
+        HeaderComponent,
+        TableauComponent,
+        PageAdminComponent,
+        TableArchiveComponent,
+        SidebarComponent,
+   
+        TestComponent
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        Ng2SearchPipeModule,
+        FormsModule,
+        NgxPaginationModule,
 
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    ]
 })
 export class AppModule { }

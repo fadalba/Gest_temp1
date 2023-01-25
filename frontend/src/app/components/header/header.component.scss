@@ -1,5 +1,5 @@
 .header {
-  background-color: #e493a3;
+  background-color: #0C7C8F;
   height: 110px;
 }
 
@@ -11,6 +11,8 @@
 }
 
 .profil {
+  background-color: #fff;
+  border-radius: 15px;
   width: 100px;
   height: 100px;
   margin-top: 5px;
@@ -40,8 +42,18 @@
   color: #fff;
   padding: 10px;
 }
+
 .end a:hover{
   color: #e493a3;
-  background-color: #fff;
   border-radius: 5px;
 }
+
+.bi{color: #FFFFFF;
+font-weight: bold;font-size:40px !important;}
+
+#bi:hover{color: red;
+ font-weight: bold;}
+
+//  .fa-myfontawersome {
+//   font-size:22px !important;
+// }
