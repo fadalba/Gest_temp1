@@ -44,11 +44,13 @@
             <td *ngIf="this.currentUser.role === 'Utilisateur'">{{ donnee.createdAt | date:'d MMMM yyyy à HH:mm'}} </td>
         </tr>
     </tbody>
-  </table>
-  <!-- ------------------------Pagination---------------------- -->
-<div class="pagination justify-content-center">
+    
+      <!-- ------------------------Pagination---------------------- -->
+<div class="pagination fixed-bottom justify-content-center">
   <pagination-controls (pageChange)="page=$event"></pagination-controls>
 </div>
+  </table>
+
 </div>
 
 <!-- Modal pour la modification -->
