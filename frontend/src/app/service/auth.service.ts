@@ -25,7 +25,6 @@ export class AuthService {
   return this.http.get(`${this.endpoint}`);
 }
 
-
  // Get single object
  GetUse(id: any): Observable<any> {
   let API_URL = `${this.endpoint}/read-user/${id}`;
