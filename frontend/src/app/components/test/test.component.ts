@@ -1,4 +1,5 @@
-
+import { Subscriber } from 'rxjs';
+import { IotService } from './../../service/iot.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from './../../service/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,6 +10,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
+
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -29,14 +32,18 @@ export class TestComponent {
   errMsg: any;
   show:boolean = false; nbrActifs!:number
   allumer:boolean = false;
-
+  dataiot: any;
+  temperature: any;
+  humidite: any;
+  affich!:any; // pour recuperer et affciher
 
 
 
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
               private actRoute: ActivatedRoute,
-              public router: Router
+              public router: Router,
+              private IotService: IotService
   ) {
 
     //Recuperer les informations de l'utilisateur
@@ -61,7 +68,14 @@ export class TestComponent {
 
   listDeroulant=['Administrateur','Utilisateur'];
 
-  ngOnInit() {}
+  ngOnInit():void {
+    // coté iot
+    this.IotService.iot().subscribe((data) => {
+      console.log(data);
+      this.affich=data
+
+        })
+  }
 
   // Fonction pour télécharger l'mage
   uploadFile(event: any) {
