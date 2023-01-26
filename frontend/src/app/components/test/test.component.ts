@@ -35,7 +35,7 @@ export class TestComponent {
   dataiot: any;
   temperature: any;
   humidite: any;
-
+  affich!:any; // pour recuperer et affciher
 
 
 
@@ -70,16 +70,11 @@ export class TestComponent {
 
   ngOnInit():void {
     // coté iot
-    this.IotService.iot().subscribe((data:any) => {
+    this.IotService.iot().subscribe((data) => {
       console.log(data);
-      /* this.dataiot=data;
-      console.log(this.dataiot?.temp)
-      this.temperature = this.dataiot?.temp;
-      this.humidite=this.dataiot?.humidite;
-      console.log(this.temperature)
-      console.log(this.humidite);
-             */
-    })
+      this.affich=data
+
+        })
   }
 
   // Fonction pour télécharger l'mage

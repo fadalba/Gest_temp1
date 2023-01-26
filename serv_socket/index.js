@@ -73,7 +73,12 @@ var assert = require('assert');
 
 var server = http.createServer(app);
 var mongodb = require('mongodb');
-var io = require("socket.io")(server);
+var io = require("socket.io")(server, 
+{     cors: 
+    {origin: "*",
+    methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
+    credentials: false     }
+});
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb').MongoClient;
 var binary = mongodb.Binary;
@@ -128,7 +133,7 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 16 && min == 32 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+    if ((heur == 14 && min == 19 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
         var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
         var humi = parseInt(temp[1]);
         console.log("Données" + tempe);
