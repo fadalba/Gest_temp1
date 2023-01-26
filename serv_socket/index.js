@@ -223,6 +223,7 @@ app.get('', (req, res) => {
 
 });
 
+
 //
 
 //Si on arrive pas a lire sur le port, on affiche l'erreur concernee
