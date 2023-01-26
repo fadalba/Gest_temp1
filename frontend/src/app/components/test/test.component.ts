@@ -32,7 +32,6 @@ export class TestComponent {
   errMsg: any;
   show:boolean = false; nbrActifs!:number
   allumer:boolean = false;
-  IotService: any;
   dataiot: any;
   temperature: any;
   humidite: any;
@@ -43,7 +42,8 @@ export class TestComponent {
   constructor(public formBuilder: FormBuilder,
               public authService: AuthService,
               private actRoute: ActivatedRoute,
-              public router: Router
+              public router: Router,
+              private IotService: IotService
   ) {
 
     //Recuperer les informations de l'utilisateur
@@ -68,9 +68,9 @@ export class TestComponent {
 
   listDeroulant=['Administrateur','Utilisateur'];
 
-  ngOnInit() {
+  ngOnInit():void {
     // coté iot
-    this.IotService.iot().Subscribe((data:any) => {
+    this.IotService.iot().subscribe((data:any) => {
       console.log(data);
       /* this.dataiot=data;
       console.log(this.dataiot?.temp)
