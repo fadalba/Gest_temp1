@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const api = require('./routes/auth.routes')
 
 mongoose
-.connect('mongodb+srv://fadalba:Thiaroye44@cluster0.daoknxe.mongodb.net/test')
+  .connect('mongodb://localhost:27017/notreBD') 
   
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -33,7 +33,7 @@ app.use('/api', api)
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 4005
+const port = process.env.PORT || 4000
 
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
