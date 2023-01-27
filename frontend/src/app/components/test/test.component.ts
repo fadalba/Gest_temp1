@@ -18,7 +18,7 @@ import { DatePipe, formatDate } from '@angular/common';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent {
-[x: string]: any;
+
 
   public sidebarShow: boolean = false;
 
@@ -37,8 +37,8 @@ export class TestComponent {
   temperature: any;
   humidite: any;
   affich!:any; // pour recuperer et affciher température et humidité
-  today= new Date();
-  jstoday = '';
+/*   today= new Date();
+  jstoday = ''; */
 
 
 
@@ -49,7 +49,7 @@ export class TestComponent {
               public router: Router,
               private IotService: IotService
   ) {
-    this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US');
+   // this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US');
 
     //Recuperer les informations de l'utilisateur
     // let id = this.actRoute.snapshot.paramMap.get('id');
@@ -81,7 +81,7 @@ export class TestComponent {
      })
 
      //coté tableau journalier
-/* 
+/*
 this.IotService.getIot().subscribe(
   (  th: unknown)=>{
     console.log(th);
