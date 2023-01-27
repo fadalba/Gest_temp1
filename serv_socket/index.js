@@ -227,6 +227,24 @@ app.get('', (req, res) => {
  */
 
 });
+/*
+serial = null
+interval = null
+lightOn = false
+
+turnOn  =>lightOn = true
+  port.write = new Buffer([0x01]);
+  
+
+  turnOff  =>lightOn = false
+  port.write = new Buffer([0x00]);
+
+  toggle => {if (lightOn == true)
+    turnOff()
+  else
+    turnOn()}
+    */
+     
 
 //
 
