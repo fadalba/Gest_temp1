@@ -11,6 +11,7 @@ import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
+import { Iot } from 'src/app/models/iot';
 
 @Component({
   selector: 'app-test',
@@ -37,6 +38,7 @@ export class TestComponent {
   temperature: any;
   humidite: any;
   affich!:any; // pour recuperer et affciher température et humidité
+  jour !: Iot[];
 /*   today= new Date();
   jstoday = ''; */
 
@@ -81,19 +83,19 @@ export class TestComponent {
      })
 
      //coté tableau journalier
-/*
+
 this.IotService.getIot().subscribe(
-  (  th: unknown)=>{
+  (  th: any)=>{
     console.log(th);
-    this.affich=th as unknown as iot[];
-    const data = this.affich.filter((recup:any)=>recup.Heure =='08:00:00'||recup.Heure =='12:00:00'||recup.Heure== '19:00:00' )
-    this.temperatur=[{Temperature : {"8H": data[0].temperature, "12": data[1].temperature,"8H": data[2].temperature},
-    Humidité = {"8H": data[0].humidite, "12": data[1].humidite,"8H": data[2].humidite}};
-    console.log(temperatur);
+    this.jour=th as any as Iot[];
+    const data = this.jour.filter((recup:any)=>recup.Heure =='08:00:00'||recup.Heure =='12:00:00'||recup.Heure== '19:00:00' )
+    this.temperature=[{Temperature : {"8H": data[0].temperature, "12": data[1].temperature,"8H00": data[2].temperature}},
+    //Humidité: { "8H": data[0].humidite, "12": data[1].humidite, "8H00": data[2].humidite }},
+    console.log(this.temperature)
    ]
 
   }
-) */
+)
 
 
   }

@@ -99,7 +99,7 @@ server.listen(4001, function() {
 
 const { SerialPort } = require('serialport')
 const { ReadlineParser } = require('@serialport/parser-readline')
-const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
+const port = new SerialPort({ path: '/dev/USBO', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
 //cela signifie que l'appareil peut envoyer 9600 bits par seconde à la sortie maximale et le port USB est définie
 
 // On lit les donnees par ligne telles quelles apparaissent
@@ -281,8 +281,8 @@ function getFiles(res) {
     MongoClient.connect(Url, { useNewUrlParser: true }, function(err, base) {
         if (err) throw err;
         else {
-            var db = base.db('gest_temp');
-            var collection = db.collection('temperature_hum');
+            var db = base.db('test');
+            var collection = db.collection('climat');
             collection.find({}).toArray((err, doc) => {
                 if (err) throw err;
                 else {

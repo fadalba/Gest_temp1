@@ -96,7 +96,7 @@
                     <a href="" routerLink="/archives" style="text-decoration: none;">
                         <i class="bi bi-person-fill-x" style="color: red;font-size:30px !important;"></i>
                         <h3 style="font-size: small; font-weight: bold;">Lise Archivés</h3>
-                    </a> 
+                    </a>
                 </div>
             </div>
             <div class="bas" style="display: flex; flex-direction: column;height: 50%; background-color: #F5F5F5;">
@@ -118,7 +118,7 @@
 
                </div>
             </div>
-        </div> 
+        </div>
 
     </div>
     <div class="blc3" style="border-radius: 5px;color: #000000;width: 98%; margin-left: 1.1%;padding-top: 1%;justify-content: center;">
@@ -136,10 +136,15 @@
                 <th scope="col">Dimanche</th>
               </tr>
             </thead>
-           
-            <tbody>
 
-              <tr align="center">
+            <tbody>
+            <tr align="center" *ngFor="let datas of temperature">
+                <th scope="row">8H00</th>
+                <td>{{ datas.temperature ["8h"]}} &deg;C </td>
+                <td>{{ datas.temperature ["12h"]}} &deg;C </td>
+                <td>{{ datas.temperature ["19h"]}} &deg;C </td>
+              </tr>
+              <!-- <tr align="center">
                 <th scope="row">8H00</th>
                 <td>&deg;C  / %</td>
                 <td>&deg;C  / %</td>
@@ -169,7 +174,7 @@
                 <td>&deg;C  / %</td>
                 <td>&deg;C  / %</td>
               </tr>
-            </tbody> 
+            </tbody>  -->
           </table>
     </div>
 </div>
