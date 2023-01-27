@@ -1,3 +1,4 @@
+
 <div class="container "> <!-- div general -->
     <div class="blc1">
         <div class="bl1">
@@ -7,11 +8,11 @@
             </div>
             <div class="textTemp">
                 <h3>Température</h3>
-                <h3>{{affich.temperature}}</h3>
-                
+                <h3>{{affich.temperature}} &deg; C</h3>
+
                 <!-- <i class="bi bi-thermometer-high fa-5x"></i> -->
                 <img class="icTemp"src="https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/high-temperature-icon.svg" alt="">
-                <p style="color: #000000; font-weight: bold; margin-top: 5px;">10h 00</p>
+                <p style="color: #000000; font-weight: bold; margin-top: 5px;"><p>{{today | date:'hh:mm:ss a':''}} </p>
             </div>
         </div>
         <div class="bl11">
@@ -21,7 +22,7 @@
             </div>
             <div class="textTemp">
                 <h3>Humidité</h3>
-                <h3>{{affich.humidite}}</h3>
+                <h3>{{affich.humidite}} %</h3>
                 <!-- <i class="bi bi-thermometer-high fa-5x"></i> -->
                 <img class="icHum" src="https://uxwing.com/wp-content/themes/uxwing/download/weather/water-droplet-icon.svg" alt="">
                 <p style="color: #000000; font-weight: bold; margin-top: 5px;">10h 00</p>
@@ -50,7 +51,7 @@
             <div class="tprincipal" style="margin-top: 1px;height: 8%;width: 98%;justify-content: center;font-weight: bolder;font-size: large;size: 40px;padding-left: 37%;color: #000000;"> Données moyennes de la journée</div>
 
             <div class="ens3" style="height: 100%;width: 98%;display: flex;gap: 8%;padding: 1% 1%;">
-                <!-- Le bloc vertical1 -->
+                <!-- Le bloc vertical1 pour les températures-->
                 <div class="bv1" style="width: 30%;height: 90%;display: flex;flex-direction: column;gap: 1%; background-color: #FFFFFF; box-shadow:0.3px 0px 1px black;">
                     <div class="titrTemp" style="justify-content: center; padding-left: 21%;font-weight: bold;font-size: large;size: 30px;margin-bottom: 12px;">Température <i class="bi bi-thermometer-high fa-5x" style="font-size:22px !important; color: red;"></i></div>
                     <div class="autres" style="width: 98%;height: 98%;display: flex;flex-direction: column;gap: 27%;padding-top: 10px;">
@@ -59,7 +60,7 @@
                         <p class="donn3" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">19°C</p>
                     </div>
                 </div>
-                <!-- Le bloc vertical2 -->
+                <!-- Le bloc vertical2  pour les humidités-->
                 <div class="bv2" style="width: 30%;height: 90%;display: flex;flex-direction: column;gap: 1%;background-color: #FFFFFF;box-shadow:0.3px 0px 1px black;">
                     <div class="titrTemp" style="justify-content: center; padding-left: 31%;font-weight: bold;font-size: large;size: 30px;margin-bottom: 12px;">Humidité<i class="bi bi-droplet-fill" style="font-size:22px !important;color: skyblue;"></i></div>
                     <div class="autres" style="width: 98%;height: 90%;display: flex;flex-direction: column;gap: 27%;padding-top: 10px;">
@@ -68,7 +69,7 @@
                         <p class="donn3" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">60%</p>
                     </div>
                 </div>
-                <!-- Le bloc vertical3 -->
+                <!-- Le bloc vertical3 les périodes-->
                 <div class="bv3" style="width: 30%;height: 90%;display: flex;flex-direction: column;gap: 1%;background-color: #FFFFFF;box-shadow:0.3px 0px 1px black;padding-bottom: 4%;">
                     <div class="titrTemp" style="justify-content: center; padding-left: 31%; font-weight: bold;font-size: large;size: 30px;">Période<i class="bi bi-alarm-fill" style="font-size:22p !important;"></i></div>
                     <div class="autres" style="width: 98%;height: 90%;display: flex;flex-direction: column;gap: 2%;padding-top: 10px;">

@@ -23,6 +23,10 @@ export class IotService {
 
 
 }
+// coté récupèration tableau journalier
+/* getIot(){
+  return this.http.get<any>("http://127.0.0.1:8080/")
+} */
 }
 
 
