@@ -227,7 +227,7 @@ app.get('', (req, res) => {
 
 
 });
-
+/*
 serial = null
 interval = null
 lightOn = false
@@ -243,7 +243,7 @@ turnOn  =>lightOn = true
     turnOff()
   else
     turnOn()}
-    
+    */
      
 
 //
