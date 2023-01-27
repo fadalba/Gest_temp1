@@ -133,7 +133,7 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 14 && min == 19 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+    if ((heur == 14 && min == 43 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
         var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
         var humi = parseInt(temp[1]);
         console.log("Données" + tempe);
@@ -144,7 +144,7 @@ parser.on('data', function(data) {
         MongoClient.connect(Url, { useUnifiedTopology: true }, function(err, db) {
            console.log('connecté');
             if (err) throw err;
-            var dbo = db.db("gest_temp"); // nom de ma bdd
+            var dbo = db.db("test"); // nom de ma bdd
             dbo.collection("climat").insertOne(tempEtHum, function(err, res) {
                 if (err) throw err;
                 console.log("nouvelle insertion dans la bdd");
@@ -158,9 +158,9 @@ app.get('', (req, res) => {
 
 
     //Fonction pour la recuperation de la moyenne temperature
-    MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
+  /*   MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
         if (err) throw err;
-        var dbo = db.db("gest_temp");
+        var dbo = db.db("test");
         assert.equal(null, err);
         //Declaration des variables are
         var tempDixNeufHeure;
@@ -224,7 +224,7 @@ app.get('', (req, res) => {
         });
 
     });
-
+ */
 
 });
 /*
@@ -263,7 +263,7 @@ function insertFile(file, res) {
     MongoClient.connect(Url, { useNewUrlParser: true }, function(err, base) {
         if (err) throw err;
         else {
-            var db = base.db('gest_temp');
+            var db = base.db('test');
             var collection = db.collection('climat');
             try {
                 collection.insertOne(file);

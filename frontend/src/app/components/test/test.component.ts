@@ -10,7 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
-
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-test',
@@ -18,6 +18,7 @@ import { HttpEvent } from '@angular/common/http';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent {
+
 
   public sidebarShow: boolean = false;
 
@@ -35,7 +36,10 @@ export class TestComponent {
   dataiot: any;
   temperature: any;
   humidite: any;
-  affich!:any; // pour recuperer et affciher
+  affich!:any; // pour recuperer et affciher température et humidité
+/*   today= new Date();
+  jstoday = ''; */
+
 
 
 
@@ -45,6 +49,7 @@ export class TestComponent {
               public router: Router,
               private IotService: IotService
   ) {
+   // this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US');
 
     //Recuperer les informations de l'utilisateur
     // let id = this.actRoute.snapshot.paramMap.get('id');
@@ -72,9 +77,25 @@ export class TestComponent {
     // coté iot
     this.IotService.iot().subscribe((data) => {
       console.log(data);
-      this.affich=data
+      this.affich=data // COTÉ REALTIME
+     })
 
-        })
+     //coté tableau journalier
+/*
+this.IotService.getIot().subscribe(
+  (  th: unknown)=>{
+    console.log(th);
+    this.affich=th as unknown as iot[];
+    const data = this.affich.filter((recup:any)=>recup.Heure =='08:00:00'||recup.Heure =='12:00:00'||recup.Heure== '19:00:00' )
+    this.temperatur=[{Temperature : {"8H": data[0].temperature, "12": data[1].temperature,"8H": data[2].temperature},
+    Humidité = {"8H": data[0].humidite, "12": data[1].humidite,"8H": data[2].humidite}};
+    console.log(temperatur);
+   ]
+
+  }
+) */
+
+
   }
 
   // Fonction pour télécharger l'mage

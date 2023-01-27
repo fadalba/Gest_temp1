@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
 const authorize = require('../middlewares/auth')
+const tempSchema = require('../models/Temp')
 const { check, validationResult } = require('express-validator')
 mongoose = require('mongoose')
 multer = require('multer')
@@ -142,6 +143,18 @@ router.post('/signin', (req, res, next) => {
 // Recuperez tous les utilisateurs
 router.route('/').get((req, res, next) => {
   userSchema.find((error, response)=> {
+    if (error) {
+      return next(error)
+    } else {
+      return res.status(200).json(response)
+    }
+  })
+})
+
+// Recuperez tous les utilisateurs
+router.route('/temp').get((req, res, next) => {
+  console.log("okk")
+  tempSchema.find((error, response)=> {
     if (error) {
       return next(error)
     } else {

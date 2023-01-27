@@ -10,9 +10,10 @@ let userSchema = new Schema({
     password: { type: String, required:true },
     etat: { type: Boolean, required:false },
     imageUrl: { type: String, required:false },
-    matricule: { type: String, required:true }
-    date_inscription: {type: Date():} 
-}, {timestamps: true},
+    matricule: { type: String, required:true },
+    date_inscription: {type: Date(),}
+}, 
+{timestamps: true},
 {
     collection: 'personnes'
 })
