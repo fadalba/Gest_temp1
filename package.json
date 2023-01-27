@@ -17,10 +17,15 @@
   },
   "homepage": "https://github.com/fadalba/Gest_temp1#readme",
   "dependencies": {
+<<<<<<< HEAD
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "socket.io-client": "^4.5.4"
   },
   "devDependencies": {
     "@types/socket.io-parser": "^3.0.0"
+=======
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1"
+    
+>>>>>>> 47d3c2b37da7acfaba768c649c9d61c516e0d114
   }
 }
