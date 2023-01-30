@@ -105,9 +105,9 @@ const port = new SerialPort({ path: '/dev/USBO', baudRate: 9600 })// Si la vites
 // On lit les donnees par ligne telles quelles apparaissent
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
  
-parser.on('open', function() {
+/* parser.on('open', function() {
     console.log('Connexion ouverte');
- });
+ }); */
 
 parser.on('data', function(data) {
    console.log('Températures et Humidités:');
@@ -157,74 +157,6 @@ parser.on('data', function(data) {
 app.get('', (req, res) => {
 
 
-    //Fonction pour la recuperation de la moyenne temperature
-  /*   MongoClient.connect(url, { useUnifiedTopology: true }, function(err, db) {
-        if (err) throw err;
-        var dbo = db.db("test");
-        assert.equal(null, err);
-        //Declaration des variables are
-        var tempDixNeufHeure;
-        var humDixNeufHeure;
-        var tempDouzeHeure;
-        var humDouzeHeure;
-        var tempHuitHeure;
-        var humHuitHeure;
-        var moyH;
-        var moyT;
-        //fin
-        var col = dbo.collection('climat');
-        col.aggregate([{ $group: { _id: "_id", moyeTemp: { $avg: "$Temperature" } } }]).toArray(function(err, items) {
-            console.log(items);
-            moyT = items[0].moyeTemp;
-            console.log(moyT);
-        });
-        //Moyenne humidite donnees
-        col.aggregate([{ $group: { _id: "_id", moyeHum: { $avg: "$Humidity" } } }]).toArray(function(err, humi) {
-            console.log(humi);
-            moyH = humi[0].moyeHum;
-            console.log(moyH);
-        }); 
-        //recuperation de la temperature de 8h
-        col.find({ Heure: "08:00:00" }, { Temperature: 1 }).toArray(function(err, tem1) {
-            console.log(tem1);
-            tempHuitHeure = tem1[0].Temperature;
-            humHuitHeure = tem1[0].Humidity;
-            console.log("Temperature Huit heure:\t" + tempHuitHeure);
-            console.log("Humidite Huit heure :\t" + humHuitHeure);
-        });
-        //recuperation de la temperature de 12h
-        col.find({ Heure: "12:00:00" }, { Temperature: 1 }).toArray(function(err, tem2) {
-            console.log(tem2);
-            tempDouzeHeure = tem2[0].Temperature;
-            humDouzeHeure = tem2[0].Humidity;
-            console.log("Temperature Douze heure:\t" + tempDouzeHeure);
-            console.log("Humidite Douze heure :\t" + humDouzeHeure);
-        });
-        //recuperation de la temperature de 19h
-        col.find({ Heure: "19:00:00" }, { Temperature: 1 }).toArray(function(err, tem3) {
-            console.log(tem3);
-            tempDixNeufHeure = tem3[0].Temperature;
-            humDixNeufHeure = tem3[0].Humidity;
-            console.log("Temperature Dix neuf heure:\t" + tempDixNeufHeure);
-            console.log("Humidite Dix neuf heure :\t" + humDixNeufHeure);
-
-            var affiche = [{
-                MoyTemperature: moyT,
-                MoyHumidite: moyH,
-                TempHuitHeure: tempHuitHeure,
-                HumiditeHuitHeure: humHuitHeure,
-                TemperatureDouzeHeure: tempDouzeHeure,
-                HumiditeDouzeHeure: humDouzeHeure,
-                TemperatureDixNeufHeure: tempDixNeufHeure,
-                HumiditeDixNeufHeure: humDixNeufHeure
-            }];
-            console.log("Informations récupèrées = \t" + affiche);
-            res.render('index', { recup: affiche }); // index est la vue ici
-            db.close();
-        });
-
-    });
- */
 
 });
 /*
