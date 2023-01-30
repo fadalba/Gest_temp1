@@ -38,7 +38,7 @@ export class TestComponent {
   temperature: any;
   humidite: any;
   affich!:any; // pour recuperer et affciher température et humidité
-  jour !: Iot[];
+ 
 /*   today= new Date();
   jstoday = ''; */
 
@@ -84,7 +84,7 @@ export class TestComponent {
 
      //coté tableau journalier
 
-this.IotService.getIot().subscribe(
+/* this.IotService.getIot().subscribe(
   (  th: any)=>{
     console.log(th);
     this.jour=th as any as Iot[];
@@ -95,7 +95,7 @@ this.IotService.getIot().subscribe(
    ]
 
   }
-)
+) */
 
 
   }
