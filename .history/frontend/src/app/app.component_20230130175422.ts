@@ -9,7 +9,7 @@ import { NavigationStart, Router } from '@angular/router';
 export class AppComponent {
   showHead!:boolean;
   constructor(public authService: AuthService, private router:Router) {
-    let isGoodRoute: boolean = false
+    let isGoodRoute: boolean = true
 
 
     router.events.forEach((event) => {

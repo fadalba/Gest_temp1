@@ -15,14 +15,12 @@ export class AppComponent {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         router.config.forEach(route => {
-          //console.log(route.path);
-
-          if('/'+ route.path ===event.url) {
+          if('/'+ route ===event.url) {
             isGoodRoute = true;
           }
         })
         if (event.url === '/log-in' || event.url === '/' || !isGoodRoute) {
-          this.showHead = false;
+          this.showHead = t;
         } else {
           this.showHead = true;
 
