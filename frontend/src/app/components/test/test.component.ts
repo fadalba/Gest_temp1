@@ -38,7 +38,7 @@ export class TestComponent {
   temperature: any;
   humidite: any;
   affich!:any; // pour recuperer et affciher température et humidité
- 
+
 /*   today= new Date();
   jstoday = ''; */
 

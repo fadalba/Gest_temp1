@@ -99,7 +99,7 @@ server.listen(4001, function() {
 
 const { SerialPort } = require('serialport')
 const { ReadlineParser } = require('@serialport/parser-readline')
-const port = new SerialPort({ path: '/dev/USBO', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
+const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
 //cela signifie que l'appareil peut envoyer 9600 bits par seconde à la sortie maximale et le port USB est définie
 
 // On lit les donnees par ligne telles quelles apparaissent
@@ -133,10 +133,10 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 14 && min == 43 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
-        var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
+    if ((heur == 10 && min == 08 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+        var tempe = parseInt(temp[0]); 
         var humi = parseInt(temp[1]);
-        console.log("Données" + tempe);
+        console.log("insertion" + tempe);
         
         //l'objet qui contient la temperature, humidite et la date
         var tempEtHum = { 'Temperature': temp[0], 'Humidité': temp[1], 'Date': heureEtDate, 'Heure': heureInsertion };
@@ -159,19 +159,38 @@ app.get('', (req, res) => {
 
 
 });
+/*
+serial = null
+interval = null
+lightOn = false
 
+turnOn  =>lightOn = true
+  port.write = new Buffer([0x01]);
+  
+
+  turnOff  =>lightOn = false
+  port.write = new Buffer([0x00]);
+
+  toggle => {if (lightOn == true)
+    turnOff()
+  else
+    turnOn()}
+    */
+     
+
+//
 
 //Si on arrive pas a lire sur le port, on affiche l'erreur concernee
 port.on('error', function(err) {
     console.log(err);
 });
 
-app.use(fileUpload());
+/* app.use(fileUpload());
 router.post("/upload", function(req, res) {
     var file = { name: req.body.name, file: binary(req.files.uploadedFiles.data) };
     insertFile(file, res);
-});
-
+}); */
+/* 
 function insertFile(file, res) {
     MongoClient.connect(Url, { useNewUrlParser: true }, function(err, base) {
         if (err) throw err;
@@ -188,7 +207,7 @@ function insertFile(file, res) {
             res.redirect('/');
         }
     });
-}
+} */
 
 /* function getFiles(res) {
     MongoClient.connect(Url, { useNewUrlParser: true }, function(err, base) {

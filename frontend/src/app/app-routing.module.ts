@@ -31,6 +31,7 @@ const routes: Routes = [
   { path: 'actif', component: TableauComponent, canActivate: [AuthGuard] },
   { path: 'archives', component: TableArchiveComponent, canActivate: [AuthGuard] },
   { path: 'dash', component: PageAdminComponent, canActivate: [AuthGuard] }
+
 ];
 
 @NgModule({
