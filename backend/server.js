@@ -53,5 +53,5 @@ app.use(function (err, req, res, next) {
 })
 
 
-// ici la partie iot
+
 

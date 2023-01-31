@@ -34,14 +34,11 @@ export class TestComponent {
   errMsg: any;
   show:boolean = false; nbrActifs!:number
   allumer:boolean = false;
-  dataiot: any;
+  //dataiot: any;
   temperature: any;
   humidite: any;
   affich!:any; // pour recuperer et affciher température et humidité
-
-/*   today= new Date();
-  jstoday = ''; */
-
+  eteindre!: boolean;
 
 
 
@@ -82,21 +79,7 @@ export class TestComponent {
       this.affich=data // COTÉ REALTIME
      })
 
-     //coté tableau journalier
-
-/* this.IotService.getIot().subscribe(
-  (  th: any)=>{
-    console.log(th);
-    this.jour=th as any as Iot[];
-    const data = this.jour.filter((recup:any)=>recup.Heure =='08:00:00'||recup.Heure =='12:00:00'||recup.Heure== '19:00:00' )
-    this.temperature=[{Temperature : {"8H": data[0].temperature, "12": data[1].temperature,"8H00": data[2].temperature}},
-    //Humidité: { "8H": data[0].humidite, "12": data[1].humidite, "8H00": data[2].humidite }},
-    console.log(this.temperature)
-   ]
-
-  }
-) */
-
+   
 
   }
 
@@ -166,13 +149,27 @@ export class TestComponent {
 
     }
 
-    allumerVent(){
+    allumerVent(){ // allumage ventilo
 
       this.allumer ? this.allumer = false: this.allumer = true
+      this.IotService.iot1().subscribe((data) => {
+        console.log(data)
+      }) 
+
+
 
     }
 
+    eteindreVent(){ // allumage ventilo
 
+      this.eteindre ? this.eteindre = false: this.eteindre = true
+      this.IotService.iot2().subscribe((data) => {
+        console.log(data)
+      }) 
+
+
+
+    }
 
 
 }
