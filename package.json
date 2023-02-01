@@ -18,6 +18,15 @@
   "homepage": "https://github.com/fadalba/Gest_temp1#readme",
   "dependencies": {
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
+<<<<<<< HEAD
     "ng-bootstrap": "^1.6.3"
+=======
+    "@types/lodash": "^4.14.191",
+    "lodash": "^4.17.21",
+    "socket.io-client": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/socket.io-parser": "^3.0.0"
+>>>>>>> fadel
   }
 }
