@@ -26,7 +26,7 @@
     </thead>
     <!-- Recuperer et afficher les informations de la base de donnée -->
     <tbody *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:10, currentPage:page, totalItems:totalLenght}">
-      <tr *ngIf="donnee._id !== this.currentUser._id"> <!-- Pour filter l'utilisateur qui est connecté -->
+      <tr > <!-- Pour filter l'utilisateur qui est connecté -->
             <td>{{ donnee.prenom }}</td>
             <td>{{ donnee.nom }}</td>
             <td>{{ donnee.email }}</td>
@@ -65,7 +65,7 @@
         <strong> Erreur </strong> Email déjà existant !
       </div>
       <div class="modal-body">
-        <form z[formGroup]="updateForm" (ngSubmit)="onUpdate()">
+        <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
           <label for='prenom'>Prenom</label>
           <input type="text" formControlName="prenom" class="form-control">
           <div *ngIf="submitted && updateForm.controls['prenom'].errors" class="text-danger">
