@@ -128,49 +128,24 @@
         <table class="table table-bordered border-black">
             <thead>
               <tr align="center" style="background-color: #17A2B8; color: white;">
-                <th scope="col">Heures/jours</th>
-                <th scope="col">Lundi</th>
-                <th scope="col">Mardi</th>
-                <th scope="col">Mercredi</th>
-                <th scope="col">Jeudi</th>
-                <th scope="col">Vendredi</th>
-                <th scope="col">Samedi</th>
-                <th scope="col">Dimanche</th>
+                
+                <th scope="col" *ngFor="let jour of semaine" > {{jour.Date}}</th>
+                
               </tr>
             </thead>
 
-            <tbody>
-
-              <tr align="center">
+            <tbody >
+              <tr align="center" *ngFor="let i of sem8h">
                 <th scope="row">8H00</th>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
+                <td>{{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
               </tr>
-              <tr align="center">
+              <tr align="center" *ngFor="let i of sem12h">
                 <th scope="row">12H00</th>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-              </tr>
-              <tr align="center">
-                <th scope="row">19H00</th>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-                <td>&deg;C  / %</td>
-              </tr>
+                <td> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+
+                <tr align="center" *ngFor="let i of sem19h">
+                  <th scope="row">19H00</th>
+                  <td> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
             </tbody>
           </table>
     </div>

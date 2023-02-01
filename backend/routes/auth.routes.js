@@ -8,6 +8,7 @@ const authorize = require('../middlewares/auth')
 const { check, validationResult } = require('express-validator')
 mongoose = require('mongoose')
 multer = require('multer')
+const histoSchema = require('../models/histo')
 
 // Téléchargement de la photo avec multer
 const DIR = './images/'
@@ -153,7 +154,7 @@ router.route('/').get((req, res, next) => {
 
 // Recuperez les heures
 router.route('/ht').get((req, res, next) => {
-  console.log("okk")
+  console.log("historique")
   histoSchema.find((error, response)=> {
     if (error) {
       return next(error)
@@ -161,7 +162,9 @@ router.route('/ht').get((req, res, next) => {
       return res.status(200).json(response)
     }
   })
-})
+}) 
+
+
 
 // Recuperez un utilisateur
 router.route('/read-user/:id').get((req, res) => {

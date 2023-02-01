@@ -4,5 +4,6 @@ export class Iot{
   Date!:Date;
   Heure!: string;
   temperature: any;
+humidite: any;
 
 }

@@ -136,13 +136,13 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 10 && min == 08 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+    if ((heur == 10 && min == 08 && sec == 00) || (heur == 14 && min == 52 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
         var tempe = parseInt(temp[0]); 
         var humi = parseInt(temp[1]);
         console.log("insertion" + tempe);
         
         //l'objet qui contient la temperature, humidite et la date
-        var tempEtHum = { 'Temperature': temp[0], 'Humidité': temp[1], 'Date': heureEtDate, 'Heure': heureInsertion };
+        var tempEtHum = { 'Temperature': temp[0], 'Humidite': temp[1], 'Date': heureEtDate, 'Heure': heureInsertion };
         //Connexion a mongodb et insertion Temperature et humidite
         MongoClient.connect(Url, { useUnifiedTopology: true }, function(err, db) {
            console.log('connecté');

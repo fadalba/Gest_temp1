@@ -49,6 +49,7 @@ export class TestComponent {
   sem8h!: Iot[];
   sem12h!: Iot[];
   filter_sem!: Iot[];
+  sem19h!: Iot[];
 
 
   constructor(public formBuilder: FormBuilder,
@@ -99,10 +100,10 @@ this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==thi
 this.donne8h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.temps)
 this.donne8h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.temps)
 
-this.semaine= this.historique.filter((h:any)=>h.Date < this.temps && h.Date >= this.last_week)
-this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00')
+this.semaine= this.historique.filter((h:any)=>h.Date != this.temps )
+this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00'); console.log(this.sem8h)
 this.sem12h=this.semaine.filter((s:any)=>s.Heure == '12:00:00')
-this.sem12h=this.semaine.filter((s:any)=>s.Heure == '19:00:00')
+this.sem19h=this.semaine.filter((s:any)=>s.Heure == '19:00:00')
 
 this.filter_sem=this.semaine
 this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
