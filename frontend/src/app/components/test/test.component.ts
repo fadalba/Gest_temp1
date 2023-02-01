@@ -11,6 +11,9 @@ import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 import { DatePipe, formatDate } from '@angular/common';
+import { Iot } from 'src/app/models/iot';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-test',
@@ -33,14 +36,19 @@ export class TestComponent {
   errMsg: any;
   show:boolean = false; nbrActifs!:number
   allumer:boolean = false;
-  dataiot: any;
+  //dataiot: any;
   temperature: any;
   humidite: any;
   affich!:any; // pour recuperer et affciher température et humidité
-/*   today= new Date();
-  jstoday = ''; */
-
-
+  eteindre!: boolean;
+  historique!: Iot[];
+  donne8h!: Iot[];
+  temps!: any;
+  last_week!: string;
+  semaine!: Iot[];
+  sem8h!: Iot[];
+  sem12h!: Iot[];
+  filter_sem!: Iot[];
 
 
   constructor(public formBuilder: FormBuilder,
@@ -74,26 +82,34 @@ export class TestComponent {
   listDeroulant=['Administrateur','Utilisateur'];
 
   ngOnInit():void {
+    //historique de la semaine
+    this.temps = new Date().getDate() +'/' +new Date().getMonth +'/' +new Date().getFullYear()
+    this.last_week = (new Date().getDate()-7) +'/' +new Date().getMonth +'/' +new Date().getFullYear()
     // coté iot
     this.IotService.iot().subscribe((data) => {
       console.log(data);
       this.affich=data // COTÉ REALTIME
      })
+// coté historique de la semaine
+    this.authService.gethisto().subscribe(data => {
 
-     //coté tableau journalier
-/*
-this.IotService.getIot().subscribe(
-  (  th: unknown)=>{
-    console.log(th);
-    this.affich=th as unknown as iot[];
-    const data = this.affich.filter((recup:any)=>recup.Heure =='08:00:00'||recup.Heure =='12:00:00'||recup.Heure== '19:00:00' )
-    this.temperatur=[{Temperature : {"8H": data[0].temperature, "12": data[1].temperature,"8H": data[2].temperature},
-    Humidité = {"8H": data[0].humidite, "12": data[1].humidite,"8H": data[2].humidite}};
-    console.log(temperatur);
-   ]
+this.historique=data as unknown as Iot[];
+console.log(this.historique)
+this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==this.temps)
+this.donne8h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.temps)
+this.donne8h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.temps)
 
-  }
-) */
+this.semaine= this.historique.filter((h:any)=>h.Date < this.temps && h.Date >= this.last_week)
+this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00')
+this.sem12h=this.semaine.filter((s:any)=>s.Heure == '12:00:00')
+this.sem12h=this.semaine.filter((s:any)=>s.Heure == '19:00:00')
+
+this.filter_sem=this.semaine
+this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
+
+     }
+
+      )
 
 
   }
@@ -164,11 +180,28 @@ this.IotService.getIot().subscribe(
 
     }
 
-    allumerVent(){
+    allumerVent(){ // allumage ventilo
 
       this.allumer ? this.allumer = false: this.allumer = true
+      this.IotService.iot1().subscribe((data) => {
+        console.log(data)
+      })
+
+
 
     }
+
+    eteindreVent(){ // allumage ventilo
+
+      this.eteindre ? this.eteindre = false: this.eteindre = true
+      this.IotService.iot2().subscribe((data) => {
+        console.log(data)
+      })
+
+
+
+    }
+
 
 
 

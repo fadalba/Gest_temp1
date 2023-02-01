@@ -2,7 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
-// Express APIs
+var router = express.Router();
+
 const api = require('./routes/auth.routes')
 
 mongoose
@@ -38,6 +39,19 @@ const port = process.env.PORT || 4000
 const server = app.listen(port, () => {
   console.log('connecté au port ' + port)
 })
+
+//route pour le model pour l'historique de a semaine  
+router.route('/hist').get((req, res, next) =>{
+  histo.find((error, response)=>{
+      if (error){
+          return next(error);
+      }
+      else{
+          return res.status(200).json(response)
+      }
+  })
+})
+
 
 // Express error handling
 app.use((req, res, next) => {

@@ -85,34 +85,40 @@ var binary = mongodb.Binary;
 
 app.use(express.static('public'));
 
-
-
-//la racine pour les fichiers
-router.get('/', function(req, res) {
-    getFiles(res);
-});
-
 var Url = "mongodb+srv://fadalba:Thiaroye44@cluster0.daoknxe.mongodb.net/test"; 
 server.listen(4001, function() {
     console.log('Demarrage du serveur Mongo au port', 4001);
 })
 
 const { SerialPort } = require('serialport')
-const { ReadlineParser } = require('@serialport/parser-readline')
+const { ReadlineParser } = require('@serialport/parser-readline');
+
 const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
 //cela signifie que l'appareil peut envoyer 9600 bits par seconde à la sortie maximale et le port USB est définie
 
 // On lit les donnees par ligne telles quelles apparaissent
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
  
-/* parser.on('open', function() {
+parser.on('open', function() {
     console.log('Connexion ouverte');
- }); */
+ });
 
+ /* *************gestion ventilateur *********voir coté ts de test et iot service*******************************/
+ io.on("connection", (socket) => {
+    socket.on('allum', data => {
+    socket.emit('all', 'recu')
+        console.log(data)
+        port.write(data) // écrire sur arduino
+        port.drain(err=>{
+            console.log(err)
+        })
+    })
+  })
+/* *************gestion ventilateur *********fin*******************************/
 parser.on('data', function(data) {
-   console.log('Températures et Humidités:');
+   console.log('Températures et Humidités:'); 
    let temp = data.split('/');
-   console.log(temp);
+  console.log(temp); 
   io.emit('data', {"temperature": temp[0], "humidite": temp[1]});  // envoi de la température avec emit
 
 
@@ -136,7 +142,7 @@ parser.on('data', function(data) {
     if ((heur == 09 && min == 46 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
         var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
         var humi = parseInt(temp[1]);
-        console.log("Données" + tempe);
+        console.log("insertion" + tempe);
         
         //l'objet qui contient la temperature, humidite et la date
         var tempEtHum = { 'Temperature': temp[0], 'Humidité': temp[1], 'Date': heureEtDate, 'Heure': heureInsertion };
@@ -164,46 +170,5 @@ port.on('error', function(err) {
     console.log(err);
 });
 
-app.use(fileUpload());
-router.post("/upload", function(req, res) {
-    var file = { name: req.body.name, file: binary(req.files.uploadedFiles.data) };
-    insertFile(file, res);
-});
 
-function insertFile(file, res) {
-    MongoClient.connect(Url, { useNewUrlParser: true }, function(err, base) {
-        if (err) throw err;
-        else {
-            var db = base.db('test');
-            var collection = db.collection('climat');
-            try {
-                collection.insertOne(file);
-                console.log("nouvelle insertion");
-            } catch (err) {
-                console.log("Erreur lors de l'insertion.", err);
-            }
-            base.close();
-            res.redirect('/');
-        }
-    });
-}
-
-function getFiles(res) {
-    MongoClient.connect(Url, { useNewUrlParser: true }, function(err, base) {
-        if (err) throw err;
-        else {
-            var db = base.db('gest_temp');
-            var collection = db.collection('temperature_hum');
-            collection.find({}).toArray((err, doc) => {
-                if (err) throw err;
-                else {
-                    var buffer = doc[0].file.buffer;
-                    fs.writeFileSync('uploadImage.jpg', buffer); // fs, module nodejs pour “File System”, permet de créer et gérer des fichiers pour y stocker ou lire des fichiers dans un programme Node
-                }
-            });
-            base.close();
-            res.redirect('/');
-        }
-    });
-}
 app.use("/", router);

@@ -150,10 +150,10 @@ router.route('/').get((req, res, next) => {
   })
 })
 
-// Recuperez tous les utilisateurs
-router.route('/temp').get((req, res, next) => {
+// Recuperez les heures
+router.route('/ht').get((req, res, next) => {
   console.log("okk")
-  tempSchema.find((error, response)=> {
+  histoSchema.find((error, response)=> {
     if (error) {
       return next(error)
     } else {
@@ -247,6 +247,8 @@ router.route('/updatepassword/:id').put(authorize, async(req, res) => {
       res.status(400).json({ message: error.message })
   }
   })
+
+
 
 
 module.exports = router
