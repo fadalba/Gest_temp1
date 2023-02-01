@@ -123,7 +123,7 @@ router.post('/signin', (req, res, next) => {
         },
         'longer-secret-is-better', //
         {
-          expiresIn: '2h',
+          expiresIn: '**************h',
         },
       )
       res.status(200).json({
