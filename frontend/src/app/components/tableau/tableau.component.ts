@@ -23,7 +23,7 @@ export class TableauComponent implements OnInit {
   errMsg:any = true;
 
 
-  constructor(public authService: AuthService,private activatedRoute: ActivatedRoute,private router: Router,private ngZone: NgZone,public formBuilder: FormBuilder) {
+  constructor(public authService: AuthService,private activatedRoute: ActivatedRoute,private router: Router,public formBuilder: FormBuilder) {
     /* let id = this.activatedRoute.snapshot.paramMap.get('id'); */
     let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
@@ -44,7 +44,7 @@ export class TableauComponent implements OnInit {
 
         this.user = data;
         this.Users = this.user.filter((e:any)=> e.etat == false)
-          console.log(this.Users)
+          console.log(data)
         }
     );
   }
