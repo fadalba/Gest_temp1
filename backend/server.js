@@ -3,8 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
 var router = express.Router();
-var histo= require("../serv_socket/histo") // le model
-// Express APIs
+
 const api = require('./routes/auth.routes')
 
 mongoose
