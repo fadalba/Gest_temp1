@@ -25,6 +25,10 @@ export class AuthService {
   return this.http.get(`${this.endpoint}`);
 }
 
+gethisto(){ // pour l'historique
+
+  return this.http.get(`${this.endpoint}/ht`)
+}
  // Get single object
  GetUse(id: any): Observable<any> {
   let API_URL = `${this.endpoint}/read-user/${id}`;
