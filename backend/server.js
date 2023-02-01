@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
+var router = express.Router();
+var histo= require("../serv_socket/histo") // le model
 // Express APIs
 const api = require('./routes/auth.routes')
 
@@ -39,6 +41,19 @@ const server = app.listen(port, () => {
   console.log('connecté au port ' + port)
 })
 
+//route pour le model pour l'historique de a semaine  
+router.route('/hist').get((req, res, next) =>{
+  histo.find((error, response)=>{
+      if (error){
+          return next(error);
+      }
+      else{
+          return res.status(200).json(response)
+      }
+  })
+})
+
+
 // Express error handling
 app.use((req, res, next) => {
   setImmediate(() => {
@@ -51,7 +66,6 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
 })
-
 
 
 

@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
 const authorize = require('../middlewares/auth')
-const tempSchema = require('../models/Temp')
+/* const tempSchema = require('../models/Temp') */
 const { check, validationResult } = require('express-validator')
 mongoose = require('mongoose')
 multer = require('multer')
@@ -151,10 +151,10 @@ router.route('/').get((req, res, next) => {
   })
 })
 
-// Recuperez tous les utilisateurs
-router.route('/temp').get((req, res, next) => {
+// Recuperez les heures
+router.route('/ht').get((req, res, next) => {
   console.log("okk")
-  tempSchema.find((error, response)=> {
+  histoSchema.find((error, response)=> {
     if (error) {
       return next(error)
     } else {

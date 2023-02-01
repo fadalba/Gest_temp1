@@ -85,20 +85,14 @@ var binary = mongodb.Binary;
 
 app.use(express.static('public'));
 
-
-
-//la racine pour les fichiers
-router.get('/', function(req, res) {
-    getFiles(res);
-});
-
 var Url = "mongodb+srv://fadalba:Thiaroye44@cluster0.daoknxe.mongodb.net/test"; 
 server.listen(4001, function() {
     console.log('Demarrage du serveur Mongo au port', 4001);
 })
 
 const { SerialPort } = require('serialport')
-const { ReadlineParser } = require('@serialport/parser-readline')
+const { ReadlineParser } = require('@serialport/parser-readline');
+
 const port = new SerialPort({ path: '/dev/ttyACM0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
 //cela signifie que l'appareil peut envoyer 9600 bits par seconde à la sortie maximale et le port USB est définie
 

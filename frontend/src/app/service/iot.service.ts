@@ -39,7 +39,7 @@ iot1() {
   }
   iot2() {
     return new Observable(observer => {
-      this.socket.emit('allum', '0');// allumage ventilo
+      this.socket.emit('allum', '0');// eteindre ventilo
       console.log('envoi')
       observer.next()
     });
