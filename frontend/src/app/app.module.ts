@@ -14,6 +14,7 @@ import { TableArchiveComponent } from './components/table-archive/table-archive.
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TestComponent } from './components/test/test.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 
@@ -27,7 +28,8 @@ import { TestComponent } from './components/test/test.component';
         TableArchiveComponent,
         SidebarComponent,
    
-        TestComponent
+        TestComponent,
+            NotfoundComponent
     ],
     providers: [
         {

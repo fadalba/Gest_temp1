@@ -99,6 +99,9 @@ const port = new SerialPort({ path: '/dev/ttyACM0', baudRate: 9600 })// Si la vi
 // On lit les donnees par ligne telles quelles apparaissent
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
  
+parser.on('open', function() {
+    console.log('Connexion ouverte');
+ });
 
  /* *************gestion ventilateur *********voir coté ts de test et iot service*******************************/
  io.on("connection", (socket) => {
@@ -136,8 +139,8 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 10 && min == 08 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
-        var tempe = parseInt(temp[0]); 
+    if ((heur == 09 && min == 46 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+        var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
         var humi = parseInt(temp[1]);
         console.log("insertion" + tempe);
         
@@ -160,9 +163,7 @@ parser.on('data', function(data) {
 app.get('', (req, res) => {
 
 
-
-});
-
+}); 
 
 //Si on arrive pas a lire sur le port, on affiche l'erreur concernee
 port.on('error', function(err) {
