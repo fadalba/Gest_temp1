@@ -3,7 +3,11 @@ const cors = require('cors')
 const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
 var router = express.Router();
+<<<<<<< HEAD
+// Express APIs
+=======
 
+>>>>>>> 3ca6dafd059b4a9e2d7da298a4272b243d56a2b6
 const api = require('./routes/auth.routes')
 
 mongoose
@@ -30,6 +34,7 @@ app.use(cors())
 app.use('/images', express.static('images'))
 app.use('/api', api)
 
+
 // Error favicon.ico
 app.get('/favicon.ico', (req, res) => res.status(204))
 
@@ -40,17 +45,6 @@ const server = app.listen(port, () => {
   console.log('connecté au port ' + port)
 })
 
-//route pour le model pour l'historique de a semaine  
-router.route('/hist').get((req, res, next) =>{
-  histo.find((error, response)=>{
-      if (error){
-          return next(error);
-      }
-      else{
-          return res.status(200).json(response)
-      }
-  })
-})
 
 
 // Express error handling

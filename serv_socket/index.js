@@ -139,13 +139,15 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
-    if ((heur == 09 && min == 46 && sec == 00) || (heur == 12 && min == 00 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
-        var tempe = parseInt(temp[0]); // ici on déclare une variable tempe pour prendre les valeurs rééelles
+
+    if ((heur == 17 && min == 29 && sec == 20) || (heur == 17 && min == 27 && sec == 10) || (heur == 17 && min == 29 && sec == 00)) {
+        var tempe = parseInt(temp[0]); 
+
         var humi = parseInt(temp[1]);
         console.log("insertion" + tempe);
         
         //l'objet qui contient la temperature, humidite et la date
-        var tempEtHum = { 'Temperature': temp[0], 'Humidité': temp[1], 'Date': heureEtDate, 'Heure': heureInsertion };
+        var tempEtHum = { 'Temperature': temp[0], 'Humidite': temp[1], 'Date': heureEtDate, 'Heure': heureInsertion };
         //Connexion a mongodb et insertion Temperature et humidite
         MongoClient.connect(Url, { useUnifiedTopology: true }, function(err, db) {
            console.log('connecté');
