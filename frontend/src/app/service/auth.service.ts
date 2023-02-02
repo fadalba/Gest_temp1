@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  updatepassword(id: any | null, user: { password: any; ancienpassword: any; }) {
+    return this.http.put(`${this.endpoint}/updatepassword/${id}`, user)
+  }
   endpoint: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
@@ -22,7 +25,10 @@ export class AuthService {
   return this.http.get(`${this.endpoint}`);
 }
 
+gethisto(){ // pour l'historique
 
+  return this.http.get(`${this.endpoint}/ht`)
+}
  // Get single object
  GetUse(id: any): Observable<any> {
   let API_URL = `${this.endpoint}/read-user/${id}`;
@@ -52,7 +58,7 @@ deleteUser(id: any): Observable<any> {
   // Sign-up
   signUp(prenom: string, nom: string, email: string, role: string, password: string, etat: boolean, imageUrl: File, matricule: String): Observable<any> {
     var formData: any = new FormData();
-      formData.append('prenom', prenom);
+      formData.append('prenom', prenom); // append permet d'ajouter à la fin
       formData.append('nom', nom);
       formData.append('email', email);
       formData.append('role', role);
@@ -70,6 +76,12 @@ deleteUser(id: any): Observable<any> {
   signIn(user: User) {
     return this.http
       .post<any>(`${this.endpoint}/signin`, user)
+      .pipe(map(user => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        console.log(user)
+        localStorage.setItem('id', user._id);
+        return user;
+      }));
   }
   getToken() {
     return localStorage.getItem('access_token');
@@ -106,4 +118,7 @@ deleteUser(id: any): Observable<any> {
     }
     return throwError(msg);
   }
+
+  //recuperation nombre actifs
+
 }

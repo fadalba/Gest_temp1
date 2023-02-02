@@ -1,79 +1,20 @@
+
 <!-- ---------------------------Header----------------------------- -->
-<header class="header">
-  <div class="menu_admin">
-      <div class="infos">
-          <div>
-              <div class="profil d-flex justify-center">
-                  <img [src]="currentUser.imageUrl" class="img-fluid rounded-circle"  alt="">
-              </div>
-          </div>
-          <div class="nom">
-            <h3>{{ this.currentUser.prenom }} {{ this.currentUser.nom }}</h3>
-            <p>{{ this.currentUser.matricule }}</p>
-          </div>
-      </div>
-      <div class="end">
-        <a class="m-1" (click)="afficher1()"><i style="font-size: 25px;" class="bi bi-person-check"></i> Actifs</a>
-        <a *ngIf="this.currentUser.role === 'Administrateur'" class="m-1" (click)="afficher()"><i style="font-size: 25px;" class="bi bi-person-x"></i> Archivés</a>
-        <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-            <i style="font-size: 25px;" class="bi bi-gear-fill"></i>
-        </button>
-      </div>
-  </div>
-</header>
+<div class="contener-fluid ">
+  <!-- <app-header></app-header> -->
 <!-- ----------------------------Header-------------------------- -->
+<!-- ici c'est la div qui englobe et le sidebar et le corps du dashboard -->
+  <div class="sidbarEtDashboard d-flex justify-content-center w-100">
 
-<!-- --------------------------Changer le mot de passe------------------- -->
-<div>
-  <form *ngIf="formPassword == true" class="changPass my-5">
-    <button (click)="hidePassword()" type="button" class="btn-close fermer" aria-label="Close"></button>
-    <div class="mb-3">
-      <label for="currentPassword" class="form-label">Ancien mot de passe</label>
-      <input type="password" class="form-control" name="currentPassword" required>
-    </div>
-    <div class="mb-3">
-      <label for="newPassword" class="form-label">Nouveau mot de passe</label>
-      <input type="password" class="form-control" name="newPassword" required>
-    </div>
-    <button type="submit" class="btn btn-success">Sauvegarder</button>
-  </form>
-</div>
-<!-- --------------------------Changer le mot de passe------------------- -->
+        <!-- <div class="sidebar">
+          <app-sidebar></app-sidebar>
+        </div> -->
+      <!-- <div class="centralDashboard"> -->
+        <!-- <app-tableau></app-tableau>    ici je mets le dashboard_Admin de fadal-->
+         <app-test class="w-100"></app-test>
+      <!-- </div> -->
 
 
-<!-- --------------------------Changer la photo de profil------------------- -->
-<div>
-  <form *ngIf="formImage == true" class="changPass my-5">
-    <button (click)="hideImage()" type="button" class="btn-close fermer" aria-label="Close"></button>
-    <div class="mb-3">
-      <label for="newImageUrl" class="form-label">Choisisez une image</label>
-      <input type="file" class="form-control" name="newImageUrl" required>
-    </div>
-    <button type="submit" class="btn btn-success">Confirmer</button>
-  </form>
-</div>
-<!-- --------------------------Changer la photo de profil------------------- -->
 
-<app-tableau *ngIf="!show"></app-tableau>
-<app-table-archive *ngIf="show"></app-table-archive>
-<app-modifier></app-modifier>
-
-
-<!-- --------------------------Paramètrage------------------- -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">Paramétres</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <!-- <div (click)="showPassword()" class="setting m-4" data-bs-dismiss="offcanvas">
-        <a><i class="bi bi-sliders2"></i> Changer mon mot de passe </a>
-    </div>
-    <div (click)="showImage()" class="setting m-4" data-bs-dismiss="offcanvas">
-        <a><i class="bi bi-person-gear"></i> Changer la photo de profil </a>
-    </div> -->
-    <div class="setting m-4">
-        <a (click)="logout()" *ngIf="this.authService.isLoggedIn" href=""><i class="bi bi-box-arrow-right"></i> Deconnexion </a>
-    </div>
-  </div>
-</div>
+  </div><!--fin de la div "sidbarEtDashboard"   -->
+</div><!--fin du contener   -->

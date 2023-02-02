@@ -1,12 +1,14 @@
-const express = require('express')
+const express = require('express') 
 const cors = require('cors')
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
-// Express APIs
+var router = express.Router();
+
 const api = require('./routes/auth.routes')
 
 mongoose
-  .connect('mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/User?retryWrites=true&w=majority')
+.connect('mongodb+srv://fadalba:Thiaroye44@cluster0.daoknxe.mongodb.net/test')
+  
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -35,8 +37,21 @@ app.get('/favicon.ico', (req, res) => res.status(204))
 const port = process.env.PORT || 4000
 
 const server = app.listen(port, () => {
-  console.log('Connected to port ' + port)
+  console.log('connecté au port ' + port)
 })
+
+//route pour le model pour l'historique de a semaine  
+router.route('/hist').get((req, res, next) =>{
+  histo.find((error, response)=>{
+      if (error){
+          return next(error);
+      }
+      else{
+          return res.status(200).json(response)
+      }
+  })
+})
+
 
 // Express error handling
 app.use((req, res, next) => {
@@ -50,3 +65,6 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
 })
+
+
+

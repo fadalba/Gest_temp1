@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tableau',
-  templateUrl: './tableau.component.html',
+  templateUrl:'./tableau.component.html',
   styleUrls: ['./tableau.component.scss']
 })
 export class TableauComponent implements OnInit {
@@ -23,8 +23,9 @@ export class TableauComponent implements OnInit {
   errMsg:any = true;
 
 
-  constructor(public authService: AuthService,private activatedRoute: ActivatedRoute,private router: Router,private ngZone: NgZone,public formBuilder: FormBuilder) {
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
+  constructor(public authService: AuthService,private activatedRoute: ActivatedRoute,private router: Router,public formBuilder: FormBuilder) {
+    /* let id = this.activatedRoute.snapshot.paramMap.get('id'); */
+    let id = localStorage.getItem('id')?.replaceAll('"', '');
     this.authService.getUserProfile(id).subscribe((res) => {
       this.currentUser = res.msg;
     });
@@ -43,7 +44,7 @@ export class TableauComponent implements OnInit {
 
         this.user = data;
         this.Users = this.user.filter((e:any)=> e.etat == false)
-          console.log(this.Users)
+          console.log(data)
         }
     );
   }
