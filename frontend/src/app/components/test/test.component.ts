@@ -43,6 +43,8 @@ export class TestComponent {
   eteindre!: boolean;
   historique!: Iot[];
   donne8h!: Iot[];
+  donne12h!: Iot[];
+  donne19h!: Iot[];
   temps!: any;
   last_week!: string;
   semaine!: Iot[];
@@ -50,6 +52,11 @@ export class TestComponent {
   sem12h!: Iot[];
   filter_sem!: Iot[];
   sem19h!: Iot[];
+  datHeure!:any;
+  affichdate!: string;
+  currentDate: any;
+  date: any;
+  
 
 
   constructor(public formBuilder: FormBuilder,
@@ -84,31 +91,44 @@ export class TestComponent {
 
   ngOnInit():void {
     //historique de la semaine
-    this.temps = new Date().getDate() +'/' +new Date().getMonth +'/' +new Date().getFullYear()
-    this.last_week = (new Date().getDate()-7) +'/' +new Date().getMonth +'/' +new Date().getFullYear()
-    // coté iot
+
+   //this.temps = new Date().getDate() +'/' +'0' +new Date().getMonth +'/' +new Date().getFullYear()
+    
+   this.last_week = (new Date().getDate()-7) + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear();
+  
+  // coté iot
     this.IotService.iot().subscribe((data) => {
       console.log(data);
       this.affich=data // COTÉ REALTIME
      })
 // coté historique de la semaine
     this.authService.gethisto().subscribe(data => {
+//calcul de la date et l'heure 
+/* var date = new Date(); // date
+var jour= this.date.getDate(); //renvoie le chiffre du jour du mois 
+var mois = this.date.getMonth() + 1; //le mois en chiffre
+var annee = date.getFullYear(); // me renvoie en chiffre l'annee
+if (mois < 10) { mois = '0' + mois; } // si le jour est <10 on affiche 0 devant
+if (jour < 10) { jour = '0' + jour; } // si le mois est <10 on affiche 0 devant
+this.last_week = jour + '/' + mois + '/' + annee;
+ */
 
 this.historique=data as unknown as Iot[];
 console.log(this.historique)
-this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==this.temps)
-this.donne8h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.temps)
-this.donne8h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.temps)
+/* this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==this.temps)
+this.donne12h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.temps)
+this.donne19h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.temps) */
 
-this.semaine= this.historique.filter((h:any)=>h.Date != this.temps )
-this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00'); console.log(this.sem8h)
-this.sem12h=this.semaine.filter((s:any)=>s.Heure == '12:00:00')
-this.sem19h=this.semaine.filter((s:any)=>s.Heure == '19:00:00')
+this.semaine= this.historique.filter((h:any)=>h.Date!= Date)
+console.log(this.semaine)
+this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00' && s.Date!=this.last_week); console.log(this.sem8h)
+this.sem12h=this.semaine.filter((s:any)=>s.Heure == '12:00:00' && s.Date!=this.last_week)
+this.sem19h=this.semaine.filter((s:any)=>s.Heure == '19:00:00' && s.Date!=this.last_week )
 
 this.filter_sem=this.semaine
 this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
 
-     }
+    }
 
       )
 

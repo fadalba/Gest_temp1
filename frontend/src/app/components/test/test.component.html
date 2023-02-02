@@ -43,8 +43,10 @@
                     <span class="slider round"></span>
                 </label>
             </div> -->
+            <div class="d-flex justify-between">
             <button type="button" class="btn btn-success" (click)="allumerVent()" style="width: 30%;">ON</button>
           <button type="button" class="btn btn-danger"(click)="eteindreVent()" style="width: 30%;" >OFF</button>
+        </div>
         </div>
     </div>
     <!-- ici commence la section donnees de la journee et listes -->
@@ -128,24 +130,24 @@
         <table class="table table-bordered border-black">
             <thead>
               <tr align="center" style="background-color: #17A2B8; color: white;">
-                
-                <th scope="col" *ngFor="let jour of semaine" > {{jour.Date}}</th>
-                
+                <th scope="col">Périodes</th>
+                <th scope="col" *ngFor="let periode of filter_sem" > {{periode.Date}}</th>
+
               </tr>
             </thead>
 
             <tbody >
-              <tr align="center" *ngFor="let i of sem8h">
+              <tr align="center">
                 <th scope="row">8H00</th>
-                <td>{{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+                <td *ngFor="let i of sem8h">{{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
               </tr>
-              <tr align="center" *ngFor="let i of sem12h">
+              <tr align="center">
                 <th scope="row">12H00</th>
-                <td> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+                <td *ngFor="let i of sem12h"> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
 
-                <tr align="center" *ngFor="let i of sem19h">
+                <tr align="center">
                   <th scope="row">19H00</th>
-                  <td> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+                  <td *ngFor="let i of sem19h"> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
             </tbody>
           </table>
     </div>
