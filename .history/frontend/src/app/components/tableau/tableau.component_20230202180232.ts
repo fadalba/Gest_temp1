@@ -92,8 +92,8 @@ export class TableauComponent implements OnInit {
         nom: [nom, [Validators.required, UsernameValidator.cannotContainSpace]],
         email: [email, [Validators.required, Validators.email]],
       });
-/*     console.log(id)
- */  }
+    console.log(id)
+  }
 
    onUpdate(){
     const id =  this.updateForm.value.id;

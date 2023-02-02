@@ -12,7 +12,7 @@ export class TableArchiveComponent {
 
 
   filterTerm!: string;
-  currentUser: any = {};
+
   Users:any = [];
   user:any;
   totalLenght: any;
@@ -29,8 +29,8 @@ ngOnInit(): void {
 
         this.user = data;
         this.Users= this.user.filter((e:any)=> e.etat == true)
-/*                console.log(this.Users)
- */              }
+               console.log(this.Users)
+              }
 );
 
 }

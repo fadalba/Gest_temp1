@@ -15,7 +15,7 @@
     <!-- -------------------Recherche---------------- -->
 
 
-<table class="table table-hover w-75 my-3" style="text-align: center;">
+<table *ngIf="this.currentUser.role === 'Administrateur'" class="table table-hover w-75 my-3" style="text-align: center;">
   <thead style="text-align: center;">
       <tr class="line">
           <th scope="col">Prenom</th>
@@ -25,13 +25,13 @@
           <th scope="col">Actions</th>
       </tr>
   </thead>
-  <tbody >
-      <tr *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:10, currentPage:page, totalItems:totalLenght  };">
+  <tbody>
+      <tr *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght  };">
           <td>{{ donnee.prenom }}</td>
           <td>{{ donnee.nom }}</td>
           <td>{{ donnee.email }}</td>
           <td>{{ donnee.role }}</td>
-          <td>
+          <td >
             <button class="btn link" (click)="dearchiveUser(donnee._id, donnee.etat)">
               <i class="bi bi-arrow-up-square" style="color: blue;"></i>
             </button>
