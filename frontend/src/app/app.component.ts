@@ -8,14 +8,23 @@ import { NavigationStart, Router } from '@angular/router';
 })
 export class AppComponent {
   showHead!:boolean;
-  constructor(public authService: AuthService, private router:Router) { 
+  constructor(public authService: AuthService, private router:Router) {
+    let isGoodRoute: boolean = false;
+
+
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        if (event.url === '/log-in'|| event.url === '/') {
+        router.config.forEach(route => {
+
+          if('/'+ route.path ===event.url) {
+            isGoodRoute = true;
+          }
+        })
+        if (event.url === '/log-in' || event.url === '/' || !isGoodRoute) {
           this.showHead = false;
         } else {
           this.showHead = true;
-  
+
         }
       }
     });
@@ -25,6 +34,6 @@ export class AppComponent {
   }
   title = 'frontend';
 
-  
+
 }
 

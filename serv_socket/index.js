@@ -93,12 +93,15 @@ server.listen(4001, function() {
 const { SerialPort } = require('serialport')
 const { ReadlineParser } = require('@serialport/parser-readline');
 
-const port = new SerialPort({ path: '/dev/ttyACM0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
+const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
 //cela signifie que l'appareil peut envoyer 9600 bits par seconde à la sortie maximale et le port USB est définie
 
 // On lit les donnees par ligne telles quelles apparaissent
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
  
+parser.on('open', function() {
+    console.log('Connexion ouverte');
+ });
 
  /* *************gestion ventilateur *********voir coté ts de test et iot service*******************************/
  io.on("connection", (socket) => {
@@ -136,8 +139,10 @@ parser.on('data', function(data) {
        //fin test
 
        //Insertion à la base de donénes
+
     if ((heur == 17 && min == 29 && sec == 20) || (heur == 17 && min == 27 && sec == 10) || (heur == 17 && min == 29 && sec == 00)) {
         var tempe = parseInt(temp[0]); 
+
         var humi = parseInt(temp[1]);
         console.log("insertion" + tempe);
         
@@ -160,9 +165,7 @@ parser.on('data', function(data) {
 app.get('', (req, res) => {
 
 
-
-});
-
+}); 
 
 //Si on arrive pas a lire sur le port, on affiche l'erreur concernee
 port.on('error', function(err) {

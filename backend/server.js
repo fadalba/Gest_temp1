@@ -3,7 +3,11 @@ const cors = require('cors')
 const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
 var router = express.Router();
+<<<<<<< HEAD
 // Express APIs
+=======
+
+>>>>>>> 3ca6dafd059b4a9e2d7da298a4272b243d56a2b6
 const api = require('./routes/auth.routes')
 
 mongoose

@@ -1,4 +1,3 @@
-
 <div class="container "> <!-- div general -->
     <div class="blc1">
         <div class="bl1">
@@ -8,11 +7,11 @@
             </div>
             <div class="textTemp">
                 <h3>Température</h3>
-                <h3>{{affich.temperature}} &deg; C</h3>
+                <h3>{{affich.temperature}}</h3>
 
                 <!-- <i class="bi bi-thermometer-high fa-5x"></i> -->
                 <img class="icTemp"src="https://uxwing.com/wp-content/themes/uxwing/download/medical-science-lab/high-temperature-icon.svg" alt="">
-               <!--  <p style="color: #000000; font-weight: bold; margin-top: 5px;"><p>{{today | date:'hh:mm:ss a':''}} </p> -->
+                <p style="color: #000000; font-weight: bold; margin-top: 5px;"></p>
             </div>
         </div>
         <div class="bl11">
@@ -22,10 +21,10 @@
             </div>
             <div class="textTemp">
                 <h3>Humidité</h3>
-                <h3>{{affich.humidite}} %</h3>
+                <h3>{{affich.humidite}}</h3>
                 <!-- <i class="bi bi-thermometer-high fa-5x"></i> -->
                 <img class="icHum" src="https://uxwing.com/wp-content/themes/uxwing/download/weather/water-droplet-icon.svg" alt="">
-                <!-- <p style="color: #000000; font-weight: bold; margin-top: 5px;">10h 00</p> -->
+                <p style="color: #000000; font-weight: bold; margin-top: 5px;"></p>
             </div>
         </div>
         <div class="bl12" style="display: flex;flex-direction: column;gap: 6px;">
@@ -52,28 +51,28 @@
     <!-- ici commence la section donnees de la journee et listes -->
     <div class="blc2">
         <div class="blc21" style="background-color:#FFFFFF;padding-top: -8px;box-shadow: 3px 3px 3px black;">
-            <div class="tprincipal" style="margin-top: 1px;height: 8%;width: 98%;justify-content: center;font-weight: bolder;font-size: large;size: 40px;padding-left: 37%;color: #000000;"> Données moyennes de la journée</div>
+            <div class="tprincipal" style="margin-top: 1px;height: 8%;width: 98%;justify-content: center;font-weight: bolder;font-size: large;size: 40px;padding-left: 37%;color: #000000;"> Données de la journée</div>
 
             <div class="ens3" style="height: 100%;width: 98%;display: flex;gap: 8%;padding: 1% 1%;">
-                <!-- Le bloc vertical1 pour les températures-->
+                <!-- Le bloc vertical1 -->
                 <div class="bv1" style="width: 30%;height: 90%;display: flex;flex-direction: column;gap: 1%; background-color: #FFFFFF; box-shadow:0.3px 0px 1px black;">
                     <div class="titrTemp" style="justify-content: center; padding-left: 21%;font-weight: bold;font-size: large;size: 30px;margin-bottom: 12px;">Température <i class="bi bi-thermometer-high fa-5x" style="font-size:22px !important; color: red;"></i></div>
                     <div class="autres" style="width: 98%;height: 98%;display: flex;flex-direction: column;gap: 27%;padding-top: 10px;">
-                        <p class="donn1" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">23°C</p>
-                        <p class="donn2" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">30°C</p>
-                        <p class="donn3" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">19°C</p>
+                        <p class="donn1" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">°C</p>
+                        <p class="donn2" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">°C</p>
+                        <p class="donn3" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">°C</p>
                     </div>
                 </div>
-                <!-- Le bloc vertical2  pour les humidités-->
+                <!-- Le bloc vertical2 -->
                 <div class="bv2" style="width: 30%;height: 90%;display: flex;flex-direction: column;gap: 1%;background-color: #FFFFFF;box-shadow:0.3px 0px 1px black;">
                     <div class="titrTemp" style="justify-content: center; padding-left: 31%;font-weight: bold;font-size: large;size: 30px;margin-bottom: 12px;">Humidité<i class="bi bi-droplet-fill" style="font-size:22px !important;color: skyblue;"></i></div>
                     <div class="autres" style="width: 98%;height: 90%;display: flex;flex-direction: column;gap: 27%;padding-top: 10px;">
-                        <p class="donn1" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">78%</p>
-                        <p class="donn2" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">30%</p>
-                        <p class="donn3" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">60%</p>
+                        <p class="donn1" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">%</p>
+                        <p class="donn2" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">%</p>
+                        <p class="donn3" style="text-align: center;font-weight: bold;font-size: large;size: 27px;">%</p>
                     </div>
                 </div>
-                <!-- Le bloc vertical3 les périodes-->
+                <!-- Le bloc vertical3 -->
                 <div class="bv3" style="width: 30%;height: 90%;display: flex;flex-direction: column;gap: 1%;background-color: #FFFFFF;box-shadow:0.3px 0px 1px black;padding-bottom: 4%;">
                     <div class="titrTemp" style="justify-content: center; padding-left: 31%; font-weight: bold;font-size: large;size: 30px;">Période<i class="bi bi-alarm-fill" style="font-size:22p !important;"></i></div>
                     <div class="autres" style="width: 98%;height: 90%;display: flex;flex-direction: column;gap: 2%;padding-top: 10px;">
@@ -101,6 +100,8 @@
                         <i class="bi bi-person-fill-x" style="color: red;font-size:30px !important;"></i>
                         <h3 style="font-size: small; font-weight: bold;">Lise Archivés</h3>
                     </a>
+                  
+
                 </div>
             </div>
             <div class="bas" style="display: flex; flex-direction: column;height: 50%; background-color: #F5F5F5;">
@@ -109,15 +110,15 @@
                     <div style="background-color: #F5F5F5; width: 35%;height: 100%;display: flex;flex-direction: column;gap: 9px;">
                         <div style="display: flex;flex-direction: column; height: 50%; width: 100%;">
                         <h6 style="font-weight: bold;">Température</h6>
-                        <h6>19°c</h6>
+                        <h6>°c</h6>
                         </div>
                         <div style="display: flex;flex-direction: column;height: 50%;width: 100%;">
                             <h6 style="font-weight: bold;">Humidité</h6>
-                        <h6>58%</h6>
+                        <h6>%</h6>
                         </div>
                     </div>
                     <div style=" width: 65%;height: 100%; padding-top: 13px;">
-                        <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 67%; height: 70%; border-radius: 50%;">
+                        <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 63%; height: 85%; border-radius: 50%;">
                     </div>
 
                </div>
@@ -139,6 +140,7 @@
             <tbody >
               <tr align="center">
                 <th scope="row">8H00</th>
+
                 <td *ngFor="let i of sem8h">{{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
               </tr>
               <tr align="center">
@@ -148,6 +150,8 @@
                 <tr align="center">
                   <th scope="row">19H00</th>
                   <td *ngFor="let i of sem19h"> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+=
+
             </tbody>
           </table>
     </div>
