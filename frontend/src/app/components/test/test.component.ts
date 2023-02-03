@@ -6,17 +6,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MustMatch } from 'src/app/MustMatch';
 import { HttpEventType } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
-import { DatePipe, formatDate } from '@angular/common';
 import { Iot } from 'src/app/models/iot';
 import * as _ from 'lodash';
 
 
-@Component({
-  selector: 'app-test',
+
+@Component({  selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
@@ -52,11 +50,21 @@ export class TestComponent {
   sem12h!: Iot[];
   filter_sem!: Iot[];
   sem19h!: Iot[];
-  datHeure!:any;
-  affichdate!: string;
-  currentDate: any;
-  Date=new Date();
+    Date=new Date();
   date: any;
+
+  dataiot: any;
+  currentDate: any;
+  tep8: any;
+  hm8: any;
+  hm12: any;
+  hm19: any;
+  tep19: any;
+  tep12: any;
+  moyTemp: any;
+  moyHum: any;
+  m: any;
+  hu: any;
 
 
 
@@ -66,7 +74,7 @@ export class TestComponent {
               public router: Router,
               private IotService: IotService
   ) {
-   // this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US');
+  
 
     //Recuperer les informations de l'utilisateur
     // let id = this.actRoute.snapshot.paramMap.get('id');
@@ -91,14 +99,18 @@ export class TestComponent {
   listDeroulant=['Administrateur','Utilisateur'];
 
   ngOnInit():void {
-    //historique de la semaine
+
+   
 
   // coté iot
     this.IotService.iot().subscribe((data) => {
       console.log(data);
       this.affich=data // COTÉ REALTIME
      })
-     //calcul de la date et l'heure
+
+     //calcul de la date et l'heure 
+     // coté historique de la semaine
+
  this.date = new Date(); // date
 var jour= this.date.getDate(); //renvoie le chiffre du jour du mois
 var mois = this.date.getMonth() + 1; //le mois en chiffre
@@ -106,14 +118,65 @@ var annee = this.date.getFullYear(); // me renvoie en chiffre l'annee
 if (mois < 10) { mois = '0' + mois; } // si le jour est <10 on affiche 0 devant
 if (jour < 10) { jour = '0' + jour; } // si le mois est <10 on affiche 0 devant
 this.last_week = jour + '/' + mois + '/' + annee;
-console.log(this.last_week)// coté historique de la semaine
-    this.authService.gethisto().subscribe(data => {
 
+
+    this.authService.gethisto().subscribe(data => {  
+      // affichage de la journée
+      this.currentDate = ('0'+new Date().getDate()) + '/' + ('0'+(new Date().getMonth()+1)) + '/'+  new Date().getFullYear();
 this.historique=data as unknown as Iot[];
 //console.log(this.historique)
-/* this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==this.temps)
-this.donne12h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.temps)
-this.donne19h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.temps) */
+this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==this.currentDate)
+console.log(this.donne8h)
+this.donne12h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.currentDate)
+this.donne19h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.currentDate)
+
+// donnees pour 8h
+let tmp8 = this.donne8h;
+let b:any =  tmp8;
+// console.log(tmp8!);
+for (const iterator of b) 
+      {
+        // console.log(iterator.Temperature);
+        // console.log(iterator.Humidité);
+
+        this.tep8= iterator.Temperature;
+        this.hm8=iterator.Humidite;
+
+      }
+      // donnees pour 12h
+let tmp12 = this.donne12h;
+let c:any =  tmp12;
+// console.log(tmp8!);
+for (const iterator of c) 
+      {
+        // console.log(iterator.Temperature);
+        // console.log(iterator.Humidité);
+
+        this.tep12= iterator.Temperature;
+        this.hm12=iterator.Humidite;
+
+      }
+
+          // donnees pour 19h
+let tmp19 = this.donne19h;
+let d:any =  tmp12;
+// console.log(tmp8!);
+for (const iterator of d) 
+      {
+        // console.log(iterator.Temperature);
+        // console.log(iterator.Humidité);
+
+        this.tep19= iterator.Temperature;
+        this.hm19=iterator.Humidite;
+
+      }
+// calcul de la moyenne journalière
+      this.moyTemp = (parseInt(String(this.tep8)) + parseInt(String(this.tep12))) + parseInt(String(this.tep19)) / 3;
+     this.moyHum = (parseInt(String(this.hm8)) + parseInt(String(this.hm12)) + parseInt(String(this.hm19))) / 3;
+
+    this.m= (Math.round(this.moyTemp*100)/100)+0;  this.hu= (Math.round(this.moyHum*100)/100)+0;
+
+      // fin
 
 this.semaine= this.historique.filter((h:any)=>h.Date!=this.last_week)
 
@@ -123,6 +186,7 @@ this.sem19h=this.semaine.filter((s:any)=>s.Heure == '19:00:00')
 
 this.filter_sem=this.semaine
 this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
+
 
     }
 

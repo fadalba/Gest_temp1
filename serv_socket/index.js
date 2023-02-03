@@ -94,9 +94,10 @@ const { SerialPort } = require('serialport')
 const { ReadlineParser } = require('@serialport/parser-readline');
 
 const port = new SerialPort({ path: '/dev/ttyUSB3', baudRate: 9600 })// Si la vitesse de transmission est de 9600 (norme pour nos balances), 
+
 //cela signifie que l'appareil peut envoyer 9600 bits par seconde à la sortie maximale et le port USB est définie
 
-// On lit les donnees par ligne telles quelles apparaissent
+// On lit les donnees par ligne telles quelles appa raissent
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
  
 parser.on('open', function() {
@@ -140,7 +141,7 @@ parser.on('data', function(data) {
 
        //Insertion à la base de donénes
 
-    if ((heur == 17 && min == 29 && sec == 20) || (heur == 17 && min == 27 && sec == 10) || (heur == 17 && min == 29 && sec == 00)) {
+    if ((heur == 11 && min == 35 && sec == 00) || (heur == 17 && min == 27 && sec == 10) || (heur == 17 && min == 29 && sec == 00)) {
         var tempe = parseInt(temp[0]); 
 
         var humi = parseInt(temp[1]);
