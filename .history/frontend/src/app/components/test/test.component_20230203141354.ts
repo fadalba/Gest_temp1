@@ -159,7 +159,7 @@ for (const iterator of c)
 
           // donnees pour 19h
 let tmp19 = this.donne19h;
-let d:any =  tmp19;
+let d:any =  tmp1;
 // console.log(tmp8!);
 for (const iterator of d)
       {
@@ -275,7 +275,7 @@ this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
 
     eteindreVent(){ // allumage ventilo
 
-      this.allumer=false
+      this.eteindre ? this.eteindre = false: this.eteindre = true
       this.IotService.iot2().subscribe((data) => {
 /*         console.log(data)
  */      })
