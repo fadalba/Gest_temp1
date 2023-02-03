@@ -27,14 +27,10 @@
                 <p style="color: #000000; font-weight: bold; margin-top: 5px;"></p>
             </div>
         </div>
-        <div class="bl12" style="display: flex;flex-direction: column;gap: 6px;">
+        <div class="bl12 d-flex justify-content-center">
             <div class="fanetalarm">
-               <i class="bi bi-fan fa-5x"  *ngIf="!allumer" style="color: #10742e;font-size:50px !important;"></i>
-               <i class="bi bi-fan fa-5x" *ngIf="allumer" style="color:red; font-size:50px !important;"></i>
-
-               <i class="bi bi-bell-fill fa-5x" style="color: rgb(85, 83, 83);font-size:50px !important;"></i>
-<!--                <i class="bi bi-bell-fill fa-5x"  style="color: rgb(5, 129, 40);font-size:50px !important;"></i>
- -->
+               <i class="bi bi-fan fa-5x" *ngIf="!allumer" style="color: red;font-size:50px !important;"></i>
+               <i class="bi bi-fan fa-5x" *ngIf="allumer" style="color:#10742e; font-size:50px !important;"></i>
             </div>
            <!--  <div class="boutonswitch" style="margin: left 20px;">
                 <label class="switch" >
@@ -42,9 +38,9 @@
                     <span class="slider round"></span>
                 </label>
             </div> -->
-            <div class="d-flex justify-between">
-            <button type="button" class="btn btn-success" (click)="allumerVent()" style="width: 30%;">ON</button>
-          <button type="button" class="btn btn-danger"(click)="eteindreVent()" style="width: 30%;" >OFF</button>
+            <div class="d-flex justify-content-center" style="margin-right: 68px;">
+            <button type="button" class="btn btn-success" (click)="allumerVent()" style="width: 30%; margin-right: 70px;">ON</button>
+            <button type="button" class="btn btn-danger"(click)="eteindreVent()" style="width: 30%; margin-right: 70px;">OFF</button>
         </div>
         </div>
     </div>
@@ -87,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="blc22" style="height: 100%;" >
+        <div class="blc22" style="height: 100%;">
             <div class="haut" style="display: flex; flex-direction: column;height: 47%; gap: -10px; background-color: #F5F5F5;">
                 <div class="hau" style="height: 50%; vertical-align:center;">
                     <a href=""routerLink="/actif" style="text-decoration: none;">
@@ -100,7 +96,7 @@
                         <i class="bi bi-person-fill-x" style="color: red;font-size:30px !important;"></i>
                         <h3 style="font-size: small; font-weight: bold;">Lise Archivés</h3>
                     </a>
-                  
+
 
                 </div>
             </div>
@@ -139,25 +135,26 @@
               <tr align="center" style="background-color: #17A2B8; color: white;">
                 <th scope="col">Périodes</th>
                 <th scope="col" *ngFor="let periode of filter_sem" > {{periode.Date}}</th>
-
               </tr>
             </thead>
-
             <tbody >
               <tr align="center">
                 <th scope="row">8H00</th>
 
-                <td *ngFor="let i of sem8h">{{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+                <td *ngFor="let i of sem8h">{{i.Temperature}} &deg;C/{{i.Humidite}} %</td >
               </tr>
               <tr align="center">
                 <th scope="row">12H00</th>
-                <td *ngFor="let i of sem12h"> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+                <td *ngFor="let i of sem12h"> {{i.Temperature}} &deg;C/{{i.Humidite}} %</td>
 
                 <tr align="center">
                   <th scope="row">19H00</th>
+
                   <td *ngFor="let i of sem19h"> {{i.Temperature}} &deg;C  / {{i.Humidite}} %</td>
+
 
             </tbody>
           </table>
     </div>
 </div>
+

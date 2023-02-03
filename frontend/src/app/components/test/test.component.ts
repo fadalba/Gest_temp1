@@ -52,6 +52,7 @@ export class TestComponent {
   sem19h!: Iot[];
     Date=new Date();
   date: any;
+
   dataiot: any;
   currentDate: any;
   tep8: any;
@@ -64,7 +65,7 @@ export class TestComponent {
   moyHum: any;
   m: any;
   hu: any;
-  
+
 
 
   constructor(public formBuilder: FormBuilder,
@@ -106,10 +107,12 @@ export class TestComponent {
       console.log(data);
       this.affich=data // COTÉ REALTIME
      })
+
      //calcul de la date et l'heure 
      // coté historique de la semaine
+
  this.date = new Date(); // date
-var jour= this.date.getDate(); //renvoie le chiffre du jour du mois 
+var jour= this.date.getDate(); //renvoie le chiffre du jour du mois
 var mois = this.date.getMonth() + 1; //le mois en chiffre
 var annee = this.date.getFullYear(); // me renvoie en chiffre l'annee
 if (mois < 10) { mois = '0' + mois; } // si le jour est <10 on affiche 0 devant
@@ -177,7 +180,7 @@ for (const iterator of d)
 
 this.semaine= this.historique.filter((h:any)=>h.Date!=this.last_week)
 
-this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00'); 
+this.sem8h=this.semaine.filter((s:any)=>s.Heure == '08:00:00');
 this.sem12h=this.semaine.filter((s:any)=>s.Heure == '12:00:00')
 this.sem19h=this.semaine.filter((s:any)=>s.Heure == '19:00:00')
 
@@ -263,6 +266,7 @@ this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
       this.allumer ? this.allumer = false: this.allumer = true
       this.IotService.iot1().subscribe((data) => {
         console.log(data)
+        
       })
 
 
