@@ -140,7 +140,7 @@ parser.on('data', function(data) {
 
        //Insertion à la base de donénes
 
-    if ((heur == 11 && min == 35 && sec == 00) || (heur == 17 && min == 27 && sec == 10) || (heur == 17 && min == 29 && sec == 00)) {
+    if ((heur == 17 && min == 27 && sec == 00) || (heur == 17 && min == 27 && sec == 10) || (heur == 17 && min == 29 && sec == 00)) {
         var tempe = parseInt(temp[0]); 
 
         var humi = parseInt(temp[1]);
