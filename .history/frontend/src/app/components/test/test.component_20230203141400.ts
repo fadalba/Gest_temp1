@@ -275,7 +275,7 @@ this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
 
     eteindreVent(){ // allumage ventilo
 
-      this.allumer=false
+      this.eteindre ? this.eteindre = false: this.eteindre = true
       this.IotService.iot2().subscribe((data) => {
 /*         console.log(data)
  */      })

@@ -105,22 +105,22 @@
                <div style="background-color: #F5F5F5; width: 100%; height: 100%; display: flex;gap: 5%;padding: auto;">
                     <div style="background-color: #F5F5F5; width: 35%;height: 100%;display: flex;flex-direction: column;gap: 9px;">
                         <div style="display: flex;flex-direction: column; height: 50%; width: 100%;">
-                        <h6 style="font-weight: bold;">{{this.m}}°C</h6>
-
+                        <h6 style="font-weight: bold;">{{this.m}}</h6>
+                        
                         </div>
                         <div style="display: flex;flex-direction: column;height: 50%;width: 100%;">
-                            <h6 style="font-weight: bold;">{{this.hu}} %</h6>
+                            <h6 style="font-weight: bold;">{{this.hu}}</h6>
 
                         </div>
                     </div>
                    <!--  <div style=" width: 65%;height: 100%; padding-top: 13px;">
                         <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 63%; height: 85%; border-radius: 50%;">
                     </div> -->
-                    <div style=" width: 65%;height: 100%; padding-top: 13px;" *ngIf="this.hu<35">
-                      <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 40%; height: 50%; border-radius: 50%;">
+                    <div style=" width: 65%;height: 100%; padding-top: 13px;" *ngIf="this.hu<33">
+                      <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 67%; height: 70%; border-radius: 50%;">
                   </div>
-                  <div style=" width: 65%;height: 100%; padding-top: 13px;"*ngIf="this.hu>35">
-                      <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 55%; height: 70%; border-radius: 50%;">
+                  <div style=" width: 65%;height: 100%; padding-top: 13px;"*ngIf="this.hu>33">
+                      <img src="https://hydrobuilder.com/wp/wp-content/uploads/low-humidity-in-plants-2.jpg" alt="" style="width: 67%; height: 70%; border-radius: 50%;">
                   </div>
 
                </div>

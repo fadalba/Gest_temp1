@@ -27,7 +27,7 @@
     <!-- Recuperer et afficher les informations de la base de donnée -->
     <tbody *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:10, currentPage:page, totalItems:totalLenght}">
       <tr *ngIf="donnee._id !== this.currentUser._id">
-            <td>{{ donnee.prenom }}</td>
+                    <td>{{ donnee.prenom }}</td>
             <td>{{ donnee.nom }}</td>
             <td>{{ donnee.email }}</td>
             <td>{{ donnee.role }}</td>

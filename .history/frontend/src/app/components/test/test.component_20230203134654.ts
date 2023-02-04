@@ -126,8 +126,8 @@ this.last_week = jour + '/' + mois + '/' + annee;
 this.historique=data as unknown as Iot[];
 //console.log(this.historique)
 this.donne8h= this.historique.filter((h:any)=>h.Heure=='08:00:00' && h.Date==this.currentDate)
-/* console.log(this.donne8h)
- */this.donne12h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.currentDate)
+console.log(this.donne8h)
+this.donne12h= this.historique.filter((h:any)=>h.Heure=='12:00:00' && h.Date==this.currentDate)
 this.donne19h= this.historique.filter((h:any)=>h.Heure=='19:00:00' && h.Date==this.currentDate)
 
 // donnees pour 8h
@@ -159,7 +159,7 @@ for (const iterator of c)
 
           // donnees pour 19h
 let tmp19 = this.donne19h;
-let d:any =  tmp19;
+let d:any =  tmp12;
 // console.log(tmp8!);
 for (const iterator of d)
       {
@@ -265,8 +265,8 @@ this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
 
       this.allumer ? this.allumer = false: this.allumer = true
       this.IotService.iot1().subscribe((data) => {
-/*         console.log(data)
- */
+        console.log(data)
+
       })
 
 
@@ -275,10 +275,10 @@ this.filter_sem = _.uniqBy(this.filter_sem, 'Date')
 
     eteindreVent(){ // allumage ventilo
 
-      this.allumer=false
+      this.eteindre ? this.eteindre = false: this.eteindre = true
       this.IotService.iot2().subscribe((data) => {
-/*         console.log(data)
- */      })
+        console.log(data)
+      })
 
 
 
