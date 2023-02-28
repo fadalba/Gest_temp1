@@ -7,6 +7,7 @@ const authorize = require('../middlewares/auth')
 const { check, validationResult } = require('express-validator')
 mongoose = require('mongoose')
 multer = require('multer')
+const histoSchema = require('../models/histo')
 
 // Téléchargement de la photo avec multer
 const DIR = './images/'
@@ -123,7 +124,7 @@ router.post('/signin', (req, res, next) => {
         },
         'longer-secret-is-better', //
         {
-          expiresIn: '1h',
+          expiresIn: '2h',
         },
       )
       res.status(200).json({
@@ -149,6 +150,20 @@ router.route('/').get((req, res, next) => {
     }
   })
 })
+
+// Recuperez les heures
+router.route('/ht').get((req, res, next) => {
+  console.log("historique")
+  histoSchema.find((error, response)=> {
+    if (error) {
+      return next(error)
+    } else {
+      return res.status(200).json(response)
+    }
+  })
+}) 
+
+
 
 // Recuperez un utilisateur
 router.route('/read-user/:id').get((req, res) => {
@@ -193,17 +208,17 @@ router.route('/update-user/:id').put((req, res, next) => {
 })
 
 // Delete User
-router.route('/delete-user/:id').delete((req, res, next) => {
-  userSchema.findByIdAndRemove(req.params.id, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.status(200).json({
-        msg: data,
-      })
-    }
-  })
-})
+// router.route('/delete-user/:id').delete((req, res, next) => {
+//   userSchema.findByIdAndRemove(req.params.id, (error, data) => {
+//     if (error) {
+//       return next(error)
+//     } else {
+//       res.status(200).json({
+//         msg: data,
+//       })
+//     }
+//   })
+// })
 
  
 
@@ -235,6 +250,8 @@ router.route('/updatepassword/:id').put(authorize, async(req, res) => {
       res.status(400).json({ message: error.message })
   }
   })
+
+
 
 
 module.exports = router

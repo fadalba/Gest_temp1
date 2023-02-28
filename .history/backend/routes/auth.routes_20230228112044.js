@@ -208,18 +208,18 @@ router.route('/update-user/:id').put((req, res, next) => {
 })
 
 // Delete User
-// router.route('/delete-user/:id').delete((req, res, next) => {
-//   userSchema.findByIdAndRemove(req.params.id, (error, data) => {
-//     if (error) {
-//       return next(error)
-//     } else {
-//       res.status(200).json({
-//         msg: data,
-//       })
-//     }
-//   })
-// })
-
+/* router.route('/delete-user/:id').delete((req, res, next) => {
+  userSchema.findByIdAndRemove(req.params.id, (error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      res.status(200).json({
+        msg: data,
+      })
+    }
+  })
+})
+ */
  
 
 // Modification mot de passe

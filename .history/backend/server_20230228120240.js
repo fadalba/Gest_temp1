@@ -1,12 +1,12 @@
 const express = require('express') 
 const cors = require('cors')
-const bodyParser = require('body-parser') //ça fait quoi ?
+const bodyParser = require('body-parser') 
 const mongoose = require('mongoose')
-// Express APIs
+var router = express.Router();
 const api = require('./routes/auth.routes')
 
 mongoose
-  .connect('mongodb://localhost:27017/notreBD') 
+.connect('mongodb://localhost:27017')
   
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -29,15 +29,18 @@ app.use(cors())
 app.use('/images', express.static('images'))
 app.use('/api', api)
 
+
 // Error favicon.ico
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 4005
 
 const server = app.listen(port, () => {
-  console.log('Connected to port ' + port)
+  console.log('connecté au port ' + port)
 })
+
+
 
 // Express error handling
 app.use((req, res, next) => {
@@ -53,5 +56,4 @@ app.use(function (err, req, res, next) {
 })
 
 
-// ici la partie iot
 
